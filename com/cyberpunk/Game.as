@@ -12,7 +12,7 @@ package com.cyberpunk
 
 	/**
 	 * ...
-	 * @author Caroline Aubry <caroline@carolineaubry.com>
+	 * @author LilyDrop
 	 */
 	public class Game 
 	{
@@ -21,7 +21,7 @@ package com.cyberpunk
 		private var assets:MovieClip;
 		private var character:Character;
 		private var background:InfiniteScrolling;
-		private var platforms:PlatformContainer;
+		private var platformContainer:PlatformContainer;
 		
 		private var upPressed:Number 		= 0;
 		private var downPressed:Number 	= 0;
@@ -37,12 +37,13 @@ package com.cyberpunk
 			character 		= new Character(assets.mCharacter);
 			// Scrolling background
 			background 	= new InfiniteScrolling();
-			// Platforms container - generate type A, B and C
-			//platforms 		= new PlatformContainer();
+			background._ySpeed = 4;
 			
-			// Add elements to the stage
-			//assets.mBackground.addChild(platforms);
+			platformContainer = new PlatformContainer();
+			platformContainer._ySpeed = 4;
+			
 			assets.mBackground.addChild(background);
+			assets.mBackground.addChild(platformContainer);
 			
 			_stage.addEventListener(Event.ENTER_FRAME, update);
 			_stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);

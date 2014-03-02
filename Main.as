@@ -7,7 +7,7 @@ package
 
 	/**
 	 * ...
-	 * @author Caroline Aubry <caroline@carolineaubry.com>
+	 * @author LilyDrop
 	 */
 	public class Main extends Sprite
 	{

@@ -10,7 +10,7 @@ package com.cyberpunk.States.Protagonists
 	
 	/**
 	 * ...
-	 * @author Caroline Aubry <caroline@carolineaubry.com>
+	 * @author LilyDrop
 	 */
 	public class Character  extends MovieClip
 	{

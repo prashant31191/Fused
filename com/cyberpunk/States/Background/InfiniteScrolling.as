@@ -1,6 +1,5 @@
 package com.cyberpunk.States.Background 
 {
-	import com.cyberpunk.States.Platforms.PlatformContainer;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -14,27 +13,18 @@ package com.cyberpunk.States.Background
 		private var bg1:InfiniteBackground;
 		private var bg2:InfiniteBackground;
 		private var currentBackground:InfiniteBackground;
-		private var platforms:PlatformContainer;
-		
-		private var ySpeed:Number = 4;
+		private var ySpeed:Number = 0;
 		
 		public function InfiniteScrolling() 
 		{
-			bg1 	= new InfiniteBackground();
-			bg2 	= new InfiniteBackground();
-			
-			// Platforms container - generate type A, B and C
-			platforms = new PlatformContainer();
-			
-			// Add elements to the stage
+			bg1 			= new InfiniteBackground();
+			bg2 			= new InfiniteBackground();
 			
 			bg1.x = bg1.y = bg2.x = 0;
 			bg2.y = bg1.y + bg1.height;
 			
 			addChild(bg1);
 			addChild(bg2);
-			
-			bg1.addChild(platforms);
 			
 			currentBackground = bg1;
 			
