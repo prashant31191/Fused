@@ -17,5 +17,10 @@ package com.cyberpunk.Setup
 		public static const W_LETTER:Number 	 		= 87;
 		public static const S_LETTER:Number 			= 83;
 		public static const D_LETTER:Number 			= 68;
+		
+		public static const STAGE_WIDTH:Number 	= 640;
+		public static const STAGE_HEIGHT:Number 	= 360;
+		
+		public static const Y_SPEED:Number 			= 1;
 	}
 }

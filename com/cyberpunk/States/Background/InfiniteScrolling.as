@@ -14,6 +14,7 @@ package com.cyberpunk.States.Background
 		private var bg2:InfiniteBackground;
 		private var currentBackground:InfiniteBackground;
 		private var ySpeed:Number = 0;
+		private var xSpeed:Number = 0;
 		
 		public function InfiniteScrolling() 
 		{
@@ -31,10 +32,14 @@ package com.cyberpunk.States.Background
 			addEventListener(Event.ENTER_FRAME, update);
 		}
 		
-		// ySpeed to be based on the character
-		public function set _ySpeed(ySpeed:Number):void 
+		public function set currentYSpeed(ySpeed:Number):void 
 		{
 			this.ySpeed = ySpeed; 
+		}
+		
+		public function set currentXSpeed(xSpeed:Number):void 
+		{
+			this.xSpeed = xSpeed; 
 		}
 		
 		private function update(e:Event):void

@@ -1,5 +1,6 @@
 package com.cyberpunk 
 {
+	import com.cyberpunk.States.CollisionManager;
 	import com.cyberpunk.States.Platforms.PlatformContainer;
 	import com.cyberpunk.States.Protagonists.Character;
 	import com.cyberpunk.States.Background.InfiniteScrolling;
@@ -8,6 +9,7 @@ package com.cyberpunk
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import flash.geom.Point;
 	import Main;
 
 	/**
@@ -22,25 +24,30 @@ package com.cyberpunk
 		private var character:Character;
 		private var background:InfiniteScrolling;
 		private var platformContainer:PlatformContainer;
+		private var collisionManager:CollisionManager;
 		
-		private var upPressed:Number 		= 0;
-		private var downPressed:Number 	= 0;
-		private var leftPressed:Number 		= 0;
-		private var rightPressed:Number 		= 0;
+		private var leftKeyDown:Boolean 		= false;
+		private var upKeyDown:Boolean 		= false;
+		private var rightKeyDown:Boolean 	= false;
+		private var downKeyDown:Boolean 	= false;
 		
+		private var mainJumping:Boolean = false;
+		private var jumpSpeedLimit:int = 15;
+		private var jumpSpeed:Number = jumpSpeedLimit;
+
 		public function Game(main:Main) 
 		{
 			assets = main.mAssets;
 			_stage = main._stage;
 			
-			// Main character
-			character 		= new Character(assets.mCharacter);
-			// Scrolling background
-			background 	= new InfiniteScrolling();
-			background._ySpeed = 4;
+			character = new Character(assets.mCharacter);
+			platformContainer = new PlatformContainer(character.playerPos);
 			
-			platformContainer = new PlatformContainer();
-			platformContainer._ySpeed = 4;
+			// Scrolling background
+			background = new InfiniteScrolling();
+			background.currentYSpeed = platformContainer.gameYSpeed;
+			
+			collisionManager = new CollisionManager(assets.mCharacter, platformContainer.platformArray, _stage);
 			
 			assets.mBackground.addChild(background);
 			assets.mBackground.addChild(platformContainer);
@@ -52,7 +59,34 @@ package com.cyberpunk
 		
 		private function update(evt:Event):void 
 		{
+			background.currentYSpeed = platformContainer.gameYSpeed;
+			platformContainer.currentXSpeed = collisionManager.speedX;
+			platformContainer.currentYSpeed = collisionManager.speedY;
 			
+			if (leftKeyDown) platformContainer.currentXSpeed = 5;
+			else if (rightKeyDown) platformContainer.currentXSpeed = -5;
+			else if (upKeyDown || mainJumping) mainJump();
+		}
+		
+		private function mainJump():void
+		{
+			if (!mainJumping) {
+				mainJumping = true;
+				jumpSpeed = jumpSpeedLimit * -1;
+				platformContainer.currentYSpeed = jumpSpeed;
+			} else {
+				if (jumpSpeed < 0) {
+					jumpSpeed *= 1 - jumpSpeedLimit / 75;
+					if (jumpSpeed > -jumpSpeedLimit / 5) {
+						jumpSpeed *= -1;
+					}
+				}
+			}
+			
+			if (jumpSpeed > 0) {
+				mainJumping = false;
+				platformContainer.currentYSpeed = 0;
+			} 
 		}
 		
 		private function keyDown(evt:KeyboardEvent):void 
@@ -60,13 +94,13 @@ package com.cyberpunk
 			var keyCode = evt.keyCode;
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
-				upPressed = 1;
+				upKeyDown = true;
 			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
-				downPressed = 1;
+				downKeyDown = true;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
-				leftPressed = 1;
+				leftKeyDown = true;
 			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
-				rightPressed = 1; 
+				rightKeyDown = true; 
 		}
 		
 		private function keyUp(evt:KeyboardEvent):void 
@@ -74,13 +108,13 @@ package com.cyberpunk
 			var keyCode = evt.keyCode;
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
-				upPressed = 0;
+				upKeyDown = false;
 			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
-				downPressed = 0;
+				downKeyDown = false;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
-				leftPressed = 0;
+				leftKeyDown = false;
 			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
-				rightPressed = 0; 
+				rightKeyDown = false; 
 		}
 	}
 }
