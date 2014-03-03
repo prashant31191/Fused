@@ -4,7 +4,7 @@ package
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
-
+	
 	/**
 	 * ...
 	 * @author LilyDrop

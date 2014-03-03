@@ -45,62 +45,64 @@ package com.cyberpunk.States
 		{
 			return ySpeed;
 		}
+
+		public function get downBumpingFlag():Boolean
+		{
+			return downBumping;
+		}
 		
 		private function update(evt:Event):void
 		{
 			ySpeed = Config.Y_SPEED;
 			
+			leftBumping 	= false;					
+			rightBumping 	= false;
+			upBumping 		= false;
+			downBumping 	= false;
+
 			for (var i:int = 0; i < platforms.length; i++) {
 				if (platforms[i].hitTestPoint(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y, true)) {
 					trace("leftBumping");
 					leftBumping = true;
-				} else {
-					leftBumping = false;
 				}
 				 
 				if (platforms[i].hitTestPoint(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y, true)) {
 					trace("rightBumping");
 					rightBumping = true;
-				} else {
-					rightBumping = false;
 				}
 				 
 				if (platforms[i].hitTestPoint(player.x + upBumpPoint.x, player.y + upBumpPoint.y, true)) {
 					trace("upBumping");
 					upBumping = true;
-				} else {
-					upBumping = false;
-				}
+				} 
 				 
 				if (platforms[i].hitTestPoint(player.x + downBumpPoint.x, player.y + downBumpPoint.y, true)) {
 					trace("downBumping");
 					downBumping = true;
-				} else {
-					downBumping = false;
+				} 	
+			}
+			
+			if (leftBumping) {
+				if (xSpeed < 0) {
+					xSpeed *= -0.5;
 				}
-					
-				if (leftBumping) {
-					if (xSpeed < 0) {
-						xSpeed *= -0.5;
-					}
+			}
+			 
+			if (rightBumping) {
+				if (xSpeed > 0) {
+					xSpeed *= -0.5;
 				}
-				 
-				if (rightBumping) {
-					if (xSpeed > 0) {
-						xSpeed *= -0.5;
-					}
+			}
+			 
+			if (upBumping) {
+				if (ySpeed < 0) {
+					ySpeed *= -0.5;
 				}
-				 
-				if (upBumping) {
-					if (ySpeed < 0) {
-						ySpeed *= -0.5;
-					}
-				}
-				 
-				if (downBumping) {
-					if (ySpeed > 0) {
-						ySpeed *= -0.5;
-					}
+			}
+			 
+			if (downBumping) {
+				if (ySpeed > 0) {
+					ySpeed *= -0.5;
 				}
 			}
 		}

@@ -11,6 +11,7 @@ package com.cyberpunk
 	import flash.events.KeyboardEvent;
 	import flash.geom.Point;
 	import Main;
+	import flash.external.ExternalInterface;
 
 	/**
 	 * ...
@@ -20,7 +21,7 @@ package com.cyberpunk
 	{
 		private var _stage:Stage;
 		private var main:Main;
-		private var assets:MovieClip;
+		private var assets:Assets;
 		private var character:Character;
 		private var background:InfiniteScrolling;
 		private var platformContainer:PlatformContainer;
@@ -37,8 +38,10 @@ package com.cyberpunk
 
 		public function Game(main:Main) 
 		{
-			assets = main.mAssets;
+			assets = new Assets();
 			_stage = main._stage;
+
+			_stage.addChild(assets);
 			
 			character = new Character(assets.mCharacter);
 			platformContainer = new PlatformContainer(character.playerPos);
@@ -70,6 +73,7 @@ package com.cyberpunk
 		
 		private function mainJump():void
 		{
+			ExternalInterface.call("console.log", collisionManager.downBumpingFlag);
 			if (!mainJumping) {
 				mainJumping = true;
 				jumpSpeed = jumpSpeedLimit * -1;

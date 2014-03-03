@@ -1,9 +1,26 @@
 {
-	"folders":
-	[
-		{
-			"follow_symlinks": true,
-			"path": "."
-		}
-	]
+    "folders":
+    [
+        {
+            "path": "/Users/caubry/d/workspace/cyberpunk"
+        }
+    ],
+    "template":
+    {
+        "name":"cyberpunk",
+        "width":"640",
+        "height":"360",
+        "mxmlc":
+        {
+            "config-file":
+            [
+                "build-config.xml"
+            ]
+        },
+        "run":
+        {
+            "mac":"open 'index.html' -a /Applications/Firefox.app",
+            "windows": "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe index.html"
+        }
+    }
 }
