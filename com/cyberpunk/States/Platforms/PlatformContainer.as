@@ -21,7 +21,7 @@ package com.cyberpunk.States.Platforms
 		private var player:MovieClip;
 		private var platforms:Array;
 		private var platformPlaced:Array;
-		private var platform:*;
+		private var platform:MovieClip;
 		private var savedPlatform:*;
 		private var hasPlatformGenerated:Boolean = false;
 		private var addPlatRect:Rectangle;
@@ -101,32 +101,36 @@ package com.cyberpunk.States.Platforms
 			}
 		}
 		
-		private function checkPlatforms(currentPlatform:*):Boolean {
+		private function checkPlatforms(currentPlatform:*):Boolean 
+		{
 			if (currentPlatform.hitTestObject(player)) {
 				return false;
 			}
+
+			var xOffset:int = 40;
+			var yOffset:int = 40;
+
+			var currentRect:Rectangle = new Rectangle (  
+				currentPlatform.x,
+				currentPlatform.y,
+				currentPlatform.width,
+				currentPlatform.height
+			);
+
+			currentRect.inflate(xOffset, yOffset);
 			
 			for (var i:int = 0; i < platformPlaced.length; i++) {
 				var savedPlatform:* = platformPlaced[i];
-				var xOffset:int = 40;
-				var yOffset:int = 40;
-				
-				var obj:Object = {  
-					x:  savedPlatform.x - xOffset,
-					y:  savedPlatform.y - yOffset,
-					w:  savedPlatform.width + (xOffset * 2),
-					h:  savedPlatform.height + (yOffset * 2)
-				};
-				
-				var hitBox:MovieClip = new MovieClip();
-				hitBox.graphics.beginFill(0xFFCC00);
-				hitBox.graphics.lineStyle(0, 0x666666);
-				hitBox.graphics.drawRect(obj.x, obj.y, obj.w, obj.h);
-				hitBox.graphics.endFill();
-				// addChild(hitBox);
-				
-				if (hitBox.hitTestObject(currentPlatform)) {
-					// removeChild(hitBox);
+				var rect:Rectangle = new Rectangle (  
+					savedPlatform.x,
+					savedPlatform.y,
+					savedPlatform.width,
+					savedPlatform.height
+				);
+
+				rect.inflate(xOffset, yOffset);
+
+				if (rect.intersects(currentRect)) {
 					return false;
 				}
 			}
