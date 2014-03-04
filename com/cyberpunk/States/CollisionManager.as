@@ -54,25 +54,29 @@ package com.cyberpunk.States
 			downBumping 	= false;
 
 			for (var i:int = 0; i < platforms.length; i++) {
-				if (platforms[i].hitTestPoint(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y, true)) {
-					ExternalInterface.call('console.log', 'leftBumping');
-					// leftBumping = true;
+				if (platforms[i].hitTestPoint(player.x - 20, player.y + 20, false))
+				{
+					ExternalInterface.call('console.log', 'POO')
 				}
+				// if (platforms[i].hitTestPoint(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y, true)) {
+				// 	ExternalInterface.call('console.log', 'leftBumping');
+				// 	// leftBumping = true;
+				// }
 				 
-				if (platforms[i].hitTestPoint(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y, true)) {
-					ExternalInterface.call('console.log', 'rightBumping');
-					// rightBumping = true;
-				}
+				// if (platforms[i].hitTestPoint(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y, true)) {
+				// 	ExternalInterface.call('console.log', 'rightBumping');
+				// 	// rightBumping = true;
+				// }
 				 
-				if (platforms[i].hitTestPoint(player.x + upBumpPoint.x, player.y + upBumpPoint.y, true)) {
-					ExternalInterface.call('console.log', 'upBumping');
-					// upBumping = true;
-				} 
+				// if (platforms[i].hitTestPoint(player.x + upBumpPoint.x, player.y + upBumpPoint.y, true)) {
+				// 	ExternalInterface.call('console.log', 'upBumping');
+				// 	// upBumping = true;
+				// } 
 				 
-				if (platforms[i].hitTestPoint(player.x + downBumpPoint.x, player.y + downBumpPoint.y, true)) {
-					ExternalInterface.call('console.log', 'downBumping');
-					// downBumping = true;
-				} 	
+				// if (platforms[i].hitTestPoint(player.x + downBumpPoint.x, player.y + downBumpPoint.y, true)) {
+				// 	ExternalInterface.call('console.log', 'downBumping');
+				// 	// downBumping = true;
+				// } 	
 			}
 			
 			/*if (leftBumping) {

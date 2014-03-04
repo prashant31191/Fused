@@ -10,6 +10,7 @@ package com.cyberpunk.States.Protagonists
 	import flash.utils.Timer;	
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * ...
@@ -20,18 +21,15 @@ package com.cyberpunk.States.Protagonists
 		private var character:MovieClip;
 		private var speed:Point;
 
-		private var leftKeyDown:Boolean 	= false;
-		private var upKeyDown:Boolean 		= false;
-		private var rightKeyDown:Boolean 	= false;
-		private var downKeyDown:Boolean 	= false;
-
 		private var mainJumping:Boolean = false;
 		private var jumpSpeedLimit:int  = 15;
 		private var jumpSpeed:Number    = jumpSpeedLimit;
+		private var key:Dictionary;
 		
 		public function Character(clip:MovieClip, stage:Stage) 
 		{
 			character = clip;
+			key = new Dictionary();
 			
 			clip.x = (Config.STAGE_WIDTH / 2) -  (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) -  (clip.height / 2);
@@ -59,10 +57,10 @@ package com.cyberpunk.States.Protagonists
 		
 		private function update(e:Event):void
 		{
-			if (leftKeyDown) speed.x = -5;
-			else if (rightKeyDown) speed.x = 5;
-			else if (downKeyDown) speed.y = 5;
-			else if (upKeyDown) speed.y = -5;
+			if (key['left']) speed.x = -5;
+			else if (key['right']) speed.x = 5;
+			else if (key['down']) speed.y = 5;
+			else if (key['up']) speed.y = -5;
 			// else if (upKeyDown || mainJumping) mainJump();
 			else {
 				speed.x = 0;
@@ -97,13 +95,13 @@ package com.cyberpunk.States.Protagonists
 			var keyCode:int = evt.keyCode;
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
-				upKeyDown = true;
+				key['up'] = true;
 			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
-				downKeyDown = true;
+				key['down'] = true;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
-				leftKeyDown = true;
+				key['left'] = true;
 			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
-				rightKeyDown = true; 
+				key['right'] = true;
 		}
 		
 		private function keyUp(evt:KeyboardEvent):void 
@@ -111,13 +109,13 @@ package com.cyberpunk.States.Protagonists
 			var keyCode:int = evt.keyCode;
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
-				upKeyDown = false;
+				key['up'] = false;
 			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
-				downKeyDown = false;
+				key['down'] = false;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
-				leftKeyDown = false;
+				key['left'] = false;
 			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
-				rightKeyDown = false; 
+				key['right'] = false;
 		}
 	}
 }
