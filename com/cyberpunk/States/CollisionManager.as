@@ -6,6 +6,8 @@ package com.cyberpunk.States
 	import flash.geom.Point;
 	import com.cyberpunk.Setup.Config;
 	import flash.external.ExternalInterface;
+	import flash.utils.Dictionary;
+
 	/**
 	 * ...
 	 * @author LilyDrop
@@ -13,11 +15,7 @@ package com.cyberpunk.States
 	public class CollisionManager 
 	{
 		private var platforms:Array;
-		
-		private var leftBumping:Boolean  = false;
-		private var rightBumping:Boolean = false;
-		private var upBumping:Boolean    = false;
-		private var downBumping:Boolean  = false;
+		private var bumping:Dictionary;
 		
 		private var leftBumpPoint:Point  = new Point(-20, 0);
 		private var rightBumpPoint:Point = new Point(20, 0);
@@ -28,7 +26,7 @@ package com.cyberpunk.States
 		
 		public function CollisionManager() 
 		{
-
+			bumping = new Dictionary();
 		}
 
 		public function set playerSpeed(speed:Point):void 
@@ -48,56 +46,60 @@ package com.cyberpunk.States
 		
 		public function update(player:MovieClip):void
 		{
-			leftBumping 	= false;					
-			rightBumping 	= false;
-			upBumping 		= false;
-			downBumping 	= false;
+			bumping['left']  = false;
+			bumping['right'] = false;
+			bumping['up']    = false;
+			bumping['down']  = false;
 
 			for (var i:int = 0; i < platforms.length; i++) {
-				if (platforms[i].hitTestPoint(player.x - 20, player.y + 20, false))
+				if (platforms[i].hitTestObject(player))
 				{
-					ExternalInterface.call('console.log', 'POO')
+					platforms[i].parent.removeChild(platforms[i])
 				}
 				// if (platforms[i].hitTestPoint(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y, true)) {
 				// 	ExternalInterface.call('console.log', 'leftBumping');
-				// 	// leftBumping = true;
+				// 	platforms[i].parent.removeChild(platforms[i])
+				// 	bumping['left']  = true;
 				// }
 				 
 				// if (platforms[i].hitTestPoint(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y, true)) {
 				// 	ExternalInterface.call('console.log', 'rightBumping');
-				// 	// rightBumping = true;
+				// 	platforms[i].parent.removeChild(platforms[i])
+				// 	bumping['right']  = true;
 				// }
 				 
 				// if (platforms[i].hitTestPoint(player.x + upBumpPoint.x, player.y + upBumpPoint.y, true)) {
 				// 	ExternalInterface.call('console.log', 'upBumping');
-				// 	// upBumping = true;
+				// 	platforms[i].parent.removeChild(platforms[i])
+				// 	bumping['up']  = true;
 				// } 
 				 
 				// if (platforms[i].hitTestPoint(player.x + downBumpPoint.x, player.y + downBumpPoint.y, true)) {
 				// 	ExternalInterface.call('console.log', 'downBumping');
-				// 	// downBumping = true;
+				// 	platforms[i].parent.removeChild(platforms[i])
+				// 	bumping['down']  = true;
 				// } 	
 			}
 			
-			/*if (leftBumping) {
+			/*if (bumping['left']) {
 				if (speed.x < 0) {
 					speed.x *= -0.5;
 				}
 			}
 			 
-			if (rightBumping) {
+			if (bumping['right']) {
 				if (speed.x > 0) {
 					speed.x *= -0.5;
 				}
 			}
 			 
-			if (upBumping) {
+			if (bumping['up']) {
 				if (speed.y < 0) {
 					speed.y *= -0.5;
 				}
 			}
 			 
-			if (downBumping) {
+			if (bumping['down']) {
 				if (speed.y > 0) {
 					speed.y *= -0.5;
 				}
