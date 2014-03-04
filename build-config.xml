@@ -7,7 +7,7 @@
   <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
   <compiler>
     <source-path append="true">
-      <path-element>.</path-element>
+      <path-element>src</path-element>
     </source-path>
     <include-libraries>
       <library>cyberpunk.swc</library>

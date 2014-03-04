@@ -52,33 +52,35 @@ package com.cyberpunk.States
 			bumping['down']  = false;
 
 			for (var i:int = 0; i < platforms.length; i++) {
-				if (platforms[i].hitTestObject(player))
-				{
-					platforms[i].parent.removeChild(platforms[i])
+				var playerPos1:Point = new Point(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y);
+				var playerPos2:Point = new Point(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y);
+				var playerPos3:Point = new Point(player.x + upBumpPoint.x, player.y + upBumpPoint.y);
+				var playerPos4:Point = new Point(player.x + downBumpPoint.x, player.y + downBumpPoint.y);
+
+				playerPos1 = player.parent.localToGlobal(playerPos1);
+				playerPos2 = player.parent.localToGlobal(playerPos2);
+				playerPos3 = player.parent.localToGlobal(playerPos3);
+				playerPos4 = player.parent.localToGlobal(playerPos4);
+
+				if (platforms[i].hitTestPoint(playerPos1.x, playerPos1.y, true)) {
+					ExternalInterface.call('console.log', 'leftBumping');
+					bumping['left']  = true;
 				}
-				// if (platforms[i].hitTestPoint(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y, true)) {
-				// 	ExternalInterface.call('console.log', 'leftBumping');
-				// 	platforms[i].parent.removeChild(platforms[i])
-				// 	bumping['left']  = true;
-				// }
 				 
-				// if (platforms[i].hitTestPoint(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y, true)) {
-				// 	ExternalInterface.call('console.log', 'rightBumping');
-				// 	platforms[i].parent.removeChild(platforms[i])
-				// 	bumping['right']  = true;
-				// }
+				if (platforms[i].hitTestPoint(playerPos2.x, playerPos2.y, true)) {
+					ExternalInterface.call('console.log', 'rightBumping');
+					bumping['right']  = true;
+				}
 				 
-				// if (platforms[i].hitTestPoint(player.x + upBumpPoint.x, player.y + upBumpPoint.y, true)) {
-				// 	ExternalInterface.call('console.log', 'upBumping');
-				// 	platforms[i].parent.removeChild(platforms[i])
-				// 	bumping['up']  = true;
-				// } 
+				if (platforms[i].hitTestPoint(playerPos3.x, playerPos3.y, true)) {
+					ExternalInterface.call('console.log', 'upBumping');
+					bumping['up']  = true;
+				} 
 				 
-				// if (platforms[i].hitTestPoint(player.x + downBumpPoint.x, player.y + downBumpPoint.y, true)) {
-				// 	ExternalInterface.call('console.log', 'downBumping');
-				// 	platforms[i].parent.removeChild(platforms[i])
-				// 	bumping['down']  = true;
-				// } 	
+				if (platforms[i].hitTestPoint(playerPos4.x, playerPos4.y, true)) {
+					ExternalInterface.call('console.log', 'downBumping');
+					bumping['down']  = true;
+				} 	
 			}
 			
 			/*if (bumping['left']) {
