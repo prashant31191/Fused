@@ -9,6 +9,8 @@ package com.cyberpunk.States.Platforms
 	import flash.utils.getDefinitionByName;
 	import com.cyberpunk.Helpers.Utils;
 	import com.cyberpunk.Setup.Config;
+	import flash.geom.Rectangle;
+	import flash.external.ExternalInterface;
 
 	/**
 	 * ...
@@ -16,103 +18,86 @@ package com.cyberpunk.States.Platforms
 	 */
 	public class PlatformContainer extends Sprite
 	{
-		private var ySpeed:int 	= 0;
-		private var xSpeed:int 	= 0;
 		private var player:MovieClip;
 		private var platforms:Array;
 		private var platformPlaced:Array;
 		private var platform:*;
 		private var savedPlatform:*;
-		private var backPos:Point;
 		private var hasPlatformGenerated:Boolean = false;
+		private var addPlatRect:Rectangle;
+		private var removePlatRect:Rectangle;
+		private var randomPlatform:int;
+		private var savedPlayerPos:Point;
 		
-		public function PlatformContainer(playerMc:MovieClip) 
+		public function PlatformContainer(player:MovieClip) 
 		{
-			var randomPlatform:int;
-			player = playerMc;
-			
-			/* 
-			* Add any platorms you want to see on screen, 
-			* As we are grabbing a random platform each time, 
-			* we might not see it on screen straight away.
-			**/
+			this.player = player;
+
+			savedPlayerPos = new Point(player.x, player.y);
 			
 			PlatformType1;
 			PlatformType2;
 			PlatformType3;
 			
-			platforms = ['PlatformType1', 'PlatformType2', 'PlatformType3'];
+			platforms      = ['PlatformType1', 'PlatformType2', 'PlatformType3'];
 			randomPlatform = Utils.getRandomInt(10, 20);
 			platformPlaced = new Array();
-			
+
+			var addingPlatformRect:Rectangle = new Rectangle(
+				((player.x + (player.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
+				((player.y + (player.height / 2)) - (Config.STAGE_HEIGHT / 2)) - Config.STAGE_HEIGHT,
+				Config.STAGE_WIDTH * 3,
+				Config.STAGE_HEIGHT * 3
+			);
+
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
-				generatePlatforms();
+				generatePlatforms(addingPlatformRect);
 				platformPlaced.push(platform);
 				addChild(platform);
 				savedPlatform = platform;
 			}
-			
-			addEventListener(Event.ENTER_FRAME, update);
 		}
-		
-		public function set currentYSpeed(ySpeed:Number):void 
-		{
-			this.ySpeed = ySpeed; 
-		}
-		
-		public function set currentXSpeed(xSpeed:Number):void 
-		{
-			this.xSpeed = xSpeed; 
-		}
-		
-		public function get gameYSpeed():Number 
-		{
-			return ySpeed;
-		}
-		
-		public function set backgroundPos(pos:Point):void 
-		{
-			backPos = pos;
-		}
-		
-		public function get platformArray():Array
+
+		public function get platformArray():Array 
 		{
 			return platformPlaced;
 		}
-		
-		private function generatePlatforms():void
+
+		public function update():void
 		{
-			var randomNumberPosX:int;
-			var randomNumberPosY:int;
-			var currentIndexPos:int;
-			var ClassReference:Class;
-			
-			// Create a radius around the player position 
-			var minPos:Point = new Point(
-				player.x - Config.STAGE_WIDTH,
-				player.y - Config.STAGE_HEIGHT
+			if (player.y >= savedPlayerPos.y + Config.STAGE_HEIGHT) {
+				savedPlayerPos.y = player.y;
+				addPlatforms();
+			} else if (savedPlayerPos.y - Config.STAGE_HEIGHT >= player.y) {
+				savedPlayerPos.y = player.y;
+				removePlatforms();
+			}
+		}
+		
+		private function generatePlatforms(rect:Rectangle):void 
+		{
+			var randomPoint:Point = new Point(
+				Utils.getRandomInt(
+					rect.x,
+					rect.x + rect.width
+				),
+				Utils.getRandomInt(
+					rect.y,
+					rect.y + rect.height
+				)
 			);
-			
-			var maxPos:Point = new Point(
-				player.x + Config.STAGE_WIDTH,
-				player.y + Config.STAGE_HEIGHT
-			);
-			
-			// Choose random positions
-			randomNumberPosY 	= Utils.getRandomInt(minPos.y, maxPos.y);
-			randomNumberPosX 	= Utils.getRandomInt(minPos.x, maxPos.x);
-			
-			// Grab a random index from our platforms array
-			currentIndexPos = int(Math.random() * platforms.length);
-			ClassReference  = getDefinitionByName(platforms[currentIndexPos]) as Class;
-			platform = new ClassReference();
-			platform.y = randomNumberPosY;
-			platform.x = randomNumberPosX;
-			
+
+			var currentIndexPos:int  = int(Math.random() * platforms.length);
+			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos]) as Class;
+
+			platform   = new ClassReference();
+			platform.x = randomPoint.x;
+			platform.y = randomPoint.y;
+
 			if (!checkPlatforms(platform)) {
 				platform = null;
-				generatePlatforms();
+				generatePlatforms(rect);
 			}
 		}
 		
@@ -129,8 +114,8 @@ package com.cyberpunk.States.Platforms
 				var obj:Object = {  
 					x:  savedPlatform.x - xOffset,
 					y:  savedPlatform.y - yOffset,
-					w: savedPlatform.width + (xOffset * 2),
-					h: savedPlatform.height + (yOffset * 2)
+					w:  savedPlatform.width + (xOffset * 2),
+					h:  savedPlatform.height + (yOffset * 2)
 				};
 				
 				var hitBox:MovieClip = new MovieClip();
@@ -138,34 +123,48 @@ package com.cyberpunk.States.Platforms
 				hitBox.graphics.lineStyle(0, 0x666666);
 				hitBox.graphics.drawRect(obj.x, obj.y, obj.w, obj.h);
 				hitBox.graphics.endFill();
-				//addChild(hitBox);
+				// addChild(hitBox);
 				
 				if (hitBox.hitTestObject(currentPlatform)) {
-					//removeChild(hitBox);
+					// removeChild(hitBox);
 					return false;
 				}
 			}
 			return true;
 		}
 		
-		private function update(evt:Event):void
+		private function addPlatforms():void 
 		{
-			this.y -= ySpeed;
-			this.x += xSpeed;
-			checkRadius();
+			addPlatRect = new Rectangle(
+				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
+				(player.y + (player.height * 2)) + Config.STAGE_HEIGHT,
+				Config.STAGE_WIDTH * 3,
+				Config.STAGE_HEIGHT
+			);
 
+				randomPlatform = Utils.getRandomInt(3, 5);
+
+			for (var i:int = 0; i < randomPlatform; i++) 
+			{
+				generatePlatforms(addPlatRect);
+				platformPlaced.push(platform);
+				addChild(platform);
+				savedPlatform = platform;
+			}
 		}
-		
-		private function checkRadius():void
+
+		private function removePlatforms():void 
 		{
-			if (y <= - 200 && !hasPlatformGenerated) {
-				hasPlatformGenerated = true;
-				for (var i:int = 0; i < 20; i++) 
-				{
-					generatePlatforms();
-					platformPlaced.push(platform);
-					addChild(platform);
-					savedPlatform = platform;
+			removePlatRect = new Rectangle(
+				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
+				player.y - (Config.STAGE_HEIGHT * 2),
+				Config.STAGE_WIDTH * 3,
+				Config.STAGE_HEIGHT
+			);
+
+			for (var i:int = 0; i < platformPlaced.length; i++) {
+				if (removePlatRect.contains(platformPlaced[i].x, platformPlaced[i].y)) {
+					if (platformPlaced[i]) removeChild(platformPlaced[i]);
 				}
 			}
 		}
