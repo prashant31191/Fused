@@ -34,12 +34,12 @@ package com.cyberpunk.States.Platforms
 			this.player = player;
 
 			savedPlayerPos = new Point(player.x, player.y);
-			
-			PlatformType1;
-			PlatformType2;
-			PlatformType3;
-			
-			platforms      = ['PlatformType1', 'PlatformType2', 'PlatformType3'];
+
+			platforms = [ 'com.cyberpunk.States.Platforms.Platform1', 
+						  'com.cyberpunk.States.Platforms.Platform2', 
+						  'com.cyberpunk.States.Platforms.Platform3'
+			];
+
 			randomPlatform = Utils.getRandomInt(10, 20);
 			platformPlaced = new Array();
 
@@ -87,6 +87,10 @@ package com.cyberpunk.States.Platforms
 					rect.y + rect.height
 				)
 			);
+
+			Platform1;
+			Platform2;
+			Platform3;
 
 			var currentIndexPos:int  = int(Math.random() * platforms.length);
 			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos]) as Class;
@@ -146,7 +150,7 @@ package com.cyberpunk.States.Platforms
 				Config.STAGE_HEIGHT
 			);
 
-				randomPlatform = Utils.getRandomInt(3, 5);
+				randomPlatform = Utils.getRandomInt(5, 8);
 
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{

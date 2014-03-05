@@ -34,24 +34,24 @@ package com.cyberpunk.States
 			this.speed = speed;
 		}
 
-		public function get currentSpeed():Point 
-		{
-			return speed;
-		}
-
 		public function set platformsArray(platforms:Array):void 
 		{
 			this.platforms = platforms;
 		}
+
+		public function get bumpingKeys():Dictionary 
+		{
+			return this.bumping;
+		}
 		
 		public function update(player:MovieClip):void
 		{
-			bumping['left']  = false;
-			bumping['right'] = false;
-			bumping['up']    = false;
-			bumping['down']  = false;
+			for (var key:String in bumping) {
+				bumping[key] = false;
+			}
 
 			for (var i:int = 0; i < platforms.length; i++) {
+
 				var playerPos1:Point = new Point(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y);
 				var playerPos2:Point = new Point(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y);
 				var playerPos3:Point = new Point(player.x + upBumpPoint.x, player.y + upBumpPoint.y);
@@ -62,50 +62,48 @@ package com.cyberpunk.States
 				playerPos3 = player.parent.localToGlobal(playerPos3);
 				playerPos4 = player.parent.localToGlobal(playerPos4);
 
+				speed.y = Config.Y_SPEED;
+
 				if (platforms[i].hitTestPoint(playerPos1.x, playerPos1.y, true)) {
-					ExternalInterface.call('console.log', 'leftBumping');
 					bumping['left']  = true;
 				}
 				 
 				if (platforms[i].hitTestPoint(playerPos2.x, playerPos2.y, true)) {
-					ExternalInterface.call('console.log', 'rightBumping');
 					bumping['right']  = true;
 				}
 				 
 				if (platforms[i].hitTestPoint(playerPos3.x, playerPos3.y, true)) {
-					ExternalInterface.call('console.log', 'upBumping');
 					bumping['up']  = true;
-				} 
-				 
+				}
+
 				if (platforms[i].hitTestPoint(playerPos4.x, playerPos4.y, true)) {
-					ExternalInterface.call('console.log', 'downBumping');
 					bumping['down']  = true;
-				} 	
+				} 
 			}
 			
-			/*if (bumping['left']) {
+			if (bumping['left']) {
 				if (speed.x < 0) {
-					speed.x *= -0.5;
+					speed.x += 1;
 				}
 			}
 			 
 			if (bumping['right']) {
 				if (speed.x > 0) {
-					speed.x *= -0.5;
+					speed.x -= 1;
 				}
 			}
 			 
 			if (bumping['up']) {
 				if (speed.y < 0) {
-					speed.y *= -0.5;
+					speed.y += 1;
 				}
 			}
 			 
 			if (bumping['down']) {
 				if (speed.y > 0) {
-					speed.y *= -0.5;
+					speed.y = 0;
 				}
-			}*/
+			} 
 		}
 	}
 }

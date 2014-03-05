@@ -1,17 +1,15 @@
 package com.cyberpunk.States.Platforms 
 {
-	import flash.display.Sprite;
 	
 	/**
 	 * ...
 	 * @author LilyDrop
 	 */
-	public class Platform2 extends Sprite 
+	public class Platform2 extends PlatformBase 
 	{
-		
 		public function Platform2() 
 		{
-			
+			super(new PlatformType2());
 		}
 		
 	}

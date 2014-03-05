@@ -11,83 +11,84 @@ package com.cyberpunk.States.Protagonists
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
+	// import fl.transitions.Tween;
+	// import fl.motion.easing.Elastic;
+
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Elastic;
 	
 	/**
 	 * ...
 	 * @author LilyDrop
 	 */
-	public class Character  extends Sprite
+	public class Character extends ProtagonistsBase
 	{
-		private var character:MovieClip;
-		private var speed:Point;
-
-		private var mainJumping:Boolean = false;
-		private var jumpSpeedLimit:int  = 15;
-		private var jumpSpeed:Number    = jumpSpeedLimit;
+		private var jumpSpeedLimit:int  = 80;
+		private var jumpSpeed:Number = jumpSpeedLimit;
 		private var key:Dictionary;
+		private var bumping:Dictionary;
+		private var jump:Boolean = false;
+		private var savedPlayerPos:Point;
+		private var gravity:int = 0.5;
+
+		private var leftTween:TweenLite;
+		private var rightTween:TweenLite;
 		
 		public function Character(clip:MovieClip, stage:Stage) 
 		{
-			character = clip;
+			super (clip);
+
 			key = new Dictionary();
 			
-			clip.x = (Config.STAGE_WIDTH / 2) -  (clip.width / 2);
-			clip.y = (Config.STAGE_HEIGHT / 2) -  (clip.height / 2);
+			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
+			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
+
+
 			
 			addEventListener(Event.ENTER_FRAME, update);
 
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUp);
 		}
-		
-		public function get playerClip():MovieClip
-		{
-			return character;
-		}
 
-		public function set playerSpeed(speed:Point):void 
+		public function set bumpingKeys(bumping:Dictionary):void
 		{
-			this.speed = speed;
-		}
-
-		public function get currentPlayerSpeed():Point 
-		{
-			return this.speed;
+			this.bumping = bumping;
 		}
 		
 		private function update(e:Event):void
 		{
-			if (key['left']) speed.x = -5;
-			else if (key['right']) speed.x = 5;
-			else if (key['down']) speed.y = 5;
-			else if (key['up']) speed.y = -5;
-			// else if (upKeyDown || mainJumping) mainJump();
-			else {
-				speed.x = 0;
-				speed.y = Config.Y_SPEED;
+			if (key['up'] && bumping['down'] && !jump) mainJump();
+			if (key['left']) {
+				speed.x = -8;
+				if (clip.rotationY == 0)
+					leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
 			}
+			else if (key['right']) {
+				speed.x = 8;
+				if (clip.rotationY == 180)
+					rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
+			}
+			else speed.x = 0;
 
-			character.x += speed.x;
-			character.y += speed.y;
+			if (jump) {
+        		if (clip.y > savedPlayerPos.y - jumpSpeedLimit) {
+    				gravity = -20;
+        		} else {
+        			gravity = 0.5;
+        			jump = false;
+        		}
+			}
+			
+		    speed.y += gravity;
+			clip.x += speed.x;
+			clip.y += speed.y;
 		}
 
 		private function mainJump():void 
 		{
-			if (!mainJumping) {
-				mainJumping = true;
-				jumpSpeed = jumpSpeedLimit * -1;
-				speed.y = jumpSpeed;
-			} else if (jumpSpeed < 0) {
-				jumpSpeed *= 1 - jumpSpeedLimit / 75;
-				if (jumpSpeed > -jumpSpeedLimit / 5) {
-					jumpSpeed *= -1;
-				}
-			}
-			
-			if (jumpSpeed > 0) {
-				mainJumping = false;
-				speed.y = 0;
-			} 
+			savedPlayerPos = new Point(clip.x, clip.y);
+			jump = true;
 		}
 
 		private function keyDown(evt:KeyboardEvent):void 
@@ -96,11 +97,11 @@ package com.cyberpunk.States.Protagonists
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
 				key['up'] = true;
-			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
+			else if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
 				key['down'] = true;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
 				key['left'] = true;
-			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
+			else if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
 				key['right'] = true;
 		}
 		
@@ -110,11 +111,11 @@ package com.cyberpunk.States.Protagonists
 			
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
 				key['up'] = false;
-			if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
+			else if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
 				key['down'] = false;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
 				key['left'] = false;
-			if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
+			else if (keyCode == Config.RIGHT_ARROW || keyCode == Config.D_LETTER)
 				key['right'] = false;
 		}
 	}

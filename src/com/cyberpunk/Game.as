@@ -32,7 +32,6 @@ package com.cyberpunk
 		{
 			assets = new Assets();
 			_stage = main._stage;
-
 			
 			character = new Character(assets.mCharacter, _stage);
 			character.playerSpeed = new Point(Config.X_SPEED, Config.Y_SPEED);
@@ -46,7 +45,6 @@ package com.cyberpunk
 			_stage.addChild(background);
 			_stage.addChild(assets);
 
-			// assets.mBackground.addChild(background);
 			assets.mPlatformContainer.addChild(platformContainer);
 			
 			_stage.addEventListener(Event.ENTER_FRAME, cameraFollowCharacter);
@@ -68,9 +66,13 @@ package com.cyberpunk
 			var ay:Number = ((_stage.stageHeight / 2) - assets.mouseY) / (_stage.stageHeight / 2);
 
 			background.move(-character.currentPlayerSpeed.x, -character.currentPlayerSpeed.y);
+			
 			platformContainer.update();
+
 			collisionManager.platformsArray = platformContainer.platformArray;
 			collisionManager.update(character.playerClip);
+
+			character.bumpingKeys = collisionManager.bumpingKeys;
 		}
 	}
 }
