@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ju",
+				"jumpAmount"
+			],
+			[
 				"pla",
 				"playerPos1"
 			],
@@ -38,10 +42,6 @@
 			[
 				"ex",
 				"ExternalInterface"
-			],
-			[
-				"ju",
-				"jump"
 			],
 			[
 				"x",
@@ -523,7 +523,7 @@
 			"file": "src/com/cyberpunk/States/Protagonists/Character.as",
 			"settings":
 			{
-				"buffer_size": 3217,
+				"buffer_size": 3247,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
 			"settings":
 			{
-				"buffer_size": 874,
+				"buffer_size": 917,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
 			"settings":
 			{
-				"buffer_size": 4526,
+				"buffer_size": 4570,
 				"line_ending": "Unix"
 			}
 		},
@@ -571,7 +571,15 @@
 			"file": "src/com/cyberpunk/States/CollisionManager.as",
 			"settings":
 			{
-				"buffer_size": 2850,
+				"buffer_size": 2883,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/Setup/Config.as",
+			"settings":
+			{
+				"buffer_size": 703,
 				"line_ending": "Unix"
 			}
 		}
@@ -640,6 +648,10 @@
 	},
 	"file_history":
 	[
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/Particle.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/ParticleHolder.as",
+		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/ParticleHolder.as",
+		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Particle.as",
 		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Setup/Config.as",
 		"/Users/caubry/d/workspace/cyberpunk/lib/greensock/src/com/greensock/TweenLite.as",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/interactions/interaction_4/build-config.xml",
@@ -763,11 +775,7 @@
 		"/C/workspace/octopress/source/_posts/2013-10-16-extract-assets-from-a-swf-using-swfttools.markdown",
 		"/C/workspace/caubry.github.io_SAVE/source/_layouts/default.html",
 		"/C/workspace/caubry.github.io_SAVE/source/_layouts/page.html",
-		"/C/workspace/caubry.github.io_SAVE/source/about/index.html",
-		"/C/workspace/caubry.github.io_SAVE/source/_includes/custom/header.html",
-		"/C/workspace/caubry.github.io_SAVE/source/index.html",
-		"/C/workspace/caubry.github.io/source/_includes/head.html",
-		"/C/workspace/caubry.github.io/source/_includes/header.html"
+		"/C/workspace/caubry.github.io_SAVE/source/about/index.html"
 	],
 	"find":
 	{
@@ -786,6 +794,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"jumpSpeed",
+			"jumpSpeedLimit",
+			"removePlatforms",
 			"randomPlatform",
 			"$cr",
 			"cr",
@@ -910,10 +921,7 @@
 			"inputEngine",
 			"console",
 			"Loaders",
-			"draw",
-			"PLAYER_RENDERED",
-			"mapLevel",
-			"size"
+			"draw"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -947,7 +955,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -955,15 +963,15 @@
 					"file": "src/com/cyberpunk/States/Protagonists/Character.as",
 					"settings":
 					{
-						"buffer_size": 3217,
+						"buffer_size": 3247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1893,
-								1893
+								1209,
+								1209
 							]
 						],
 						"settings":
@@ -1061,7 +1069,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 437.0,
+						"translation.y": 184.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1071,15 +1079,15 @@
 					"file": "src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
 					"settings":
 					{
-						"buffer_size": 874,
+						"buffer_size": 917,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								560,
-								560
+								856,
+								861
 							]
 						],
 						"settings":
@@ -1420,15 +1428,15 @@
 					"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
 					"settings":
 					{
-						"buffer_size": 4526,
+						"buffer_size": 4570,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2408,
-								2423
+								2099,
+								2099
 							]
 						],
 						"settings":
@@ -1526,7 +1534,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1005.0,
+						"translation.y": 380.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1653,15 +1661,15 @@
 					"file": "src/com/cyberpunk/States/CollisionManager.as",
 					"settings":
 					{
-						"buffer_size": 2850,
+						"buffer_size": 2883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1989,
-								1989
+								2357,
+								2270
 							]
 						],
 						"settings":
@@ -1759,7 +1767,123 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1060.0,
+						"translation.y": 503.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/com/cyberpunk/Setup/Config.as",
+					"settings":
+					{
+						"buffer_size": 703,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								644
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
