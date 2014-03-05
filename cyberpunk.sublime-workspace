@@ -4,6 +4,170 @@
 		"selected_items":
 		[
 			[
+				"pla",
+				"playerPos1"
+			],
+			[
+				"le",
+				"leftBumpPoint"
+			],
+			[
+				"up",
+				"upBumpPoint"
+			],
+			[
+				"do",
+				"downBumpPoint"
+			],
+			[
+				"Twe",
+				"TweenLite"
+			],
+			[
+				"tween",
+				"import fl.transitions.Tween;"
+			],
+			[
+				"cl",
+				"clip"
+			],
+			[
+				"P",
+				"Point"
+			],
+			[
+				"ex",
+				"ExternalInterface"
+			],
+			[
+				"ju",
+				"jump"
+			],
+			[
+				"x",
+				"x"
+			],
+			[
+				"ve",
+				"Velocity"
+			],
+			[
+				"Po",
+				"Point"
+			],
+			[
+				"co",
+				"collisionManager"
+			],
+			[
+				"pl",
+				"platforms"
+			],
+			[
+				"plat",
+				"platform"
+			],
+			[
+				"Pl",
+				"Platform1"
+			],
+			[
+				"s",
+				"speed"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"play",
+				"playerPos"
+			],
+			[
+				"S",
+				"Shape"
+			],
+			[
+				"r",
+				"rectangle"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"Di",
+				"import flash.utils.Dictionary;"
+			],
+			[
+				"remo",
+				"removePlatRect"
+			],
+			[
+				"SA",
+				"STAGE_HEIGHT"
+			],
+			[
+				"sav",
+				"savedPlayerPos"
+			],
+			[
+				"ran",
+				"randomPlatform"
+			],
+			[
+				"ge",
+				"generatePlatforms"
+			],
+			[
+				"Ex",
+				"import flash.external.ExternalInterface;"
+			],
+			[
+				"g",
+				"generatePlatforms"
+			],
+			[
+				"ad",
+				"addingPlatformRect"
+			],
+			[
+				"ST",
+				"STAGE_WIDTH"
+			],
+			[
+				"ext",
+				"import flash.external.ExternalInterface;"
+			],
+			[
+				"In",
+				"InfiniteBackground"
+			],
+			[
+				"di",
+				"direction"
+			],
+			[
+				"E",
+				"ExternalInterface"
+			],
+			[
+				"bg",
+				"bg1"
+			],
+			[
+				"charac",
+				"character"
+			],
+			[
+				"char",
+				"character"
+			],
+			[
+				"fun",
+				"function	new function"
+			],
+			[
 				"mar",
 				"margin-bottom"
 			],
@@ -32,10 +196,6 @@
 				"inline-block"
 			],
 			[
-				"di",
-				"display"
-			],
-			[
 				"inl",
 				"inline-block"
 			],
@@ -58,14 +218,6 @@
 			[
 				"margin-",
 				"margin-right"
-			],
-			[
-				"co",
-				"color"
-			],
-			[
-				"remo",
-				"removeBomb"
 			],
 			[
 				"draw",
@@ -100,10 +252,6 @@
 				"layerName"
 			],
 			[
-				"pla",
-				"player"
-			],
-			[
 				"Me",
 				"mediatorEvent"
 			],
@@ -118,10 +266,6 @@
 			[
 				"st",
 				"staticBlockInfo"
-			],
-			[
-				"x",
-				"x_collide"
 			],
 			[
 				"lo",
@@ -148,10 +292,6 @@
 				"drawPlayer"
 			],
 			[
-				"up",
-				"upPressed"
-			],
-			[
 				"has",
 				"hasTiles"
 			],
@@ -162,10 +302,6 @@
 			[
 				"cure",
 				"currentFrame"
-			],
-			[
-				"re",
-				"requestAnimationFrame"
 			],
 			[
 				"sa",
@@ -184,10 +320,6 @@
 				"moveTimer"
 			],
 			[
-				"a",
-				"atlasName"
-			],
-			[
 				"sca",
 				"scaleY"
 			],
@@ -200,16 +332,8 @@
 				"scaleY"
 			],
 			[
-				"pl",
-				"playerSprite"
-			],
-			[
 				"sp",
 				"sprite"
-			],
-			[
-				"play",
-				"playerNbr"
 			],
 			[
 				"player",
@@ -264,10 +388,6 @@
 				"atlasImage"
 			],
 			[
-				"ge",
-				"getStats"
-			],
-			[
 				"she",
 				"sheetName"
 			],
@@ -282,10 +402,6 @@
 			[
 				"want",
 				"wantedSprite"
-			],
-			[
-				"g",
-				"gSpriteSheets"
 			],
 			[
 				"img",
@@ -310,10 +426,6 @@
 			[
 				"power",
 				"powerUpsName"
-			],
-			[
-				"ad",
-				"addUpItem"
 			],
 			[
 				"dro",
@@ -348,10 +460,6 @@
 				"powerUpsName"
 			],
 			[
-				"ex",
-				"extraBomb"
-			],
-			[
 				"extr",
 				"extrabomb"
 			],
@@ -384,10 +492,6 @@
 				"randomIndexesArray"
 			],
 			[
-				"ran",
-				"randomIndexesArray"
-			],
-			[
 				"tot",
 				"totalGreenTiles"
 			],
@@ -410,52 +514,24 @@
 			[
 				"pa",
 				"parsedJSON"
-			],
-			[
-				"xh",
-				"xhrGet"
-			],
-			[
-				"cons",
-				"console.	console.log()"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"as",
-				"asset"
-			],
-			[
-				"load",
-				"loadBatch"
-			],
-			[
-				"dir",
-				"dirVec"
-			],
-			[
-				"nu",
-				"numXTiles"
-			],
-			[
-				"can",
-				"canvas"
-			],
-			[
-				"ti",
-				"tileIndex"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "Main.as",
+			"file": "src/com/cyberpunk/States/Protagonists/Character.as",
 			"settings":
 			{
-				"buffer_size": 609,
+				"buffer_size": 3217,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
+			"settings":
+			{
+				"buffer_size": 874,
 				"line_ending": "Unix"
 			}
 		},
@@ -463,15 +539,39 @@
 			"file": "build-config.xml",
 			"settings":
 			{
-				"buffer_size": 848,
+				"buffer_size": 926,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "com/cyberpunk/Game.as",
+			"file": "cyberpunk.sublime-project",
 			"settings":
 			{
-				"buffer_size": 3743,
+				"buffer_size": 645,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
+			"settings":
+			{
+				"buffer_size": 4526,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/States/Platforms/PlatformBase.as",
+			"settings":
+			{
+				"buffer_size": 353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/States/CollisionManager.as",
+			"settings":
+			{
+				"buffer_size": 2850,
 				"line_ending": "Unix"
 			}
 		}
@@ -540,7 +640,40 @@
 	},
 	"file_history":
 	[
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Setup/Config.as",
+		"/Users/caubry/d/workspace/cyberpunk/lib/greensock/src/com/greensock/TweenLite.as",
+		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/interactions/interaction_4/build-config.xml",
+		"/Users/caubry/d/workspace/oliv_promo_video/football/build-config.xml",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Game.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/InfiniteScrolling.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/CollisionManager.as",
+		"/Users/caubry/d/workspace/imageCompression/imageCompression.sh",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Character.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/EnnemiesContainer.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemy1.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemy2.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformBase.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformContainer.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemies3.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform1.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform2.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform3.as",
+		"/Users/caubry/d/workspace/cyberpunk/build-config.xml",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/ScrollingLayer.as",
+		"/Users/caubry/Downloads/ScrollingBackground/src/layers/Decal.as",
+		"/Users/caubry/Downloads/ScrollingBackground/src/layers/StarField.as",
+		"/Users/caubry/Downloads/ScrollingBackground/src/layers/ScrollingLayer.as",
+		"/Users/caubry/Downloads/ScrollingBackground/src/Main.as",
+		"/Users/caubry/Downloads/ScrollingBackground/src/Preloader.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/States/Platforms/PlatformContainer.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/Game.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/States/Protagonists/Character.as",
 		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/States/CollisionManager.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/States/Background/InfiniteScrolling.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/States/Background/ScrollingLayer.as",
+		"/Users/caubry/d/workspace/cyberpunk/com/cyberpunk/Setup/Config.as",
+		"/Users/caubry/d/workspace/cyberpunk/Main.as",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/build-config-dev.xml",
 		"/Users/caubry/d/workspace/cyberpunk/cyberpunk.sublime-project",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/test.html",
@@ -634,40 +767,7 @@
 		"/C/workspace/caubry.github.io_SAVE/source/_includes/custom/header.html",
 		"/C/workspace/caubry.github.io_SAVE/source/index.html",
 		"/C/workspace/caubry.github.io/source/_includes/head.html",
-		"/C/workspace/caubry.github.io/source/_includes/header.html",
-		"/C/workspace/caubry.github.io/source/_posts/2014-01-15-udacity-html5-game-development.markdown",
-		"/C/workspace/octopress/Rakefile",
-		"/C/workspace/octopress/Gemfile",
-		"/C/workspace/caubry.github.io_SAVE/_config.yml",
-		"/C/workspace/caubry.github.io/source/_layouts/default.html",
-		"/C/workspace/caubry.github.io/source/_layouts/post.html",
-		"/C/workspace/caubry.github.io/sass/_syntax.scss",
-		"/C/workspace/caubry.github.io/source/_posts/2014-02-11-git-hooks-for-jshint-node-module-with-grunt.markdown",
-		"/C/workspace/caubry.github.io/source/about/index.markdown",
-		"/C/workspace/caubry.github.io/source/_posts/2014-02-14-javascript-animation-using-requestanimationframe-and-set-a-fps.markdown",
-		"/C/workspace/caubry.github.io/source/_posts/2012-10-03-flashdevelop-for-as3.markdown",
-		"/C/workspace/caubry.github.io/source/_includes/custom/header.html",
-		"/C/workspace/caubry.github.io/source/_includes/post/author.html",
-		"/C/workspace/caubry.github.io/source/_layouts/page.html",
-		"/C/workspace/caubry.github.io/source/index.html",
-		"/C/workspace/caubry.github.io/source/_layouts/homepage.html",
-		"/C/workspace/caubry.github.io/source/about/index.html",
-		"/C/workspace/caubry.github.io/source/stylesheets/syntax.css",
-		"/C/workspace/caubry.github.io/source/css/syntax.css",
-		"/C/workspace/caubry.github.io/source/stylesheets/screen.css",
-		"/C/workspace/caubry.github.io/public/about/index.html",
-		"/C/workspace/caubry.github.io_OLD/caubry.github.io/_posts/2012-10-03-about.markdown",
-		"/C/workspace/caubry.github.io/source/projects/index.markdown",
-		"/C/workspace/caubry.github.io/public/stylesheets/screen.css",
-		"/C/workspace/caubry.github.io/sass/_greyshade.scss",
-		"/C/workspace/caubry.github.io/sass/custom/_colors.scss",
-		"/C/workspace/caubry.github.io/public/index.html",
-		"/C/workspace/caubry.github.io/Gemfile",
-		"/C/Users/Caroline/.ssh/config",
-		"/C/workspace/caubry.github.io/_posts/2012-10-03-about.markdown",
-		"/C/workspace/caubry.github.io/css/style.css",
-		"/C/workspace/caubry.github.io/_site/about/index.html",
-		"/C/Users/Caroline/caubry.github.io/_posts/2014-02-14-javascript-animation-using-requestanimationframe-and-set-a-fps.markdown"
+		"/C/workspace/caubry.github.io/source/_includes/header.html"
 	],
 	"find":
 	{
@@ -686,6 +786,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"randomPlatform",
+			"$cr",
+			"cr",
+			"platforms",
+			"Platforms",
+			"platforms",
+			"currentS",
+			"scrollRect",
+			"ScrollingLayer",
+			"leftKeyDown",
+			"removePlatforms",
+			"stage",
+			"setPla",
+			"ySpeed",
+			"xSpeed",
+			"platforms",
+			"_stage",
+			"backPos",
 			"last-child",
 			"last",
 			"last-child",
@@ -795,25 +913,7 @@
 			"draw",
 			"PLAYER_RENDERED",
 			"mapLevel",
-			"size",
-			"mapLevel",
-			"counter",
-			"keyCode",
-			"\n    ",
-			"canvas",
-			"startTime",
-			"requestId",
-			"currentFrame",
-			"drawPlayer",
-			"positionOrigin",
-			"requestId",
-			"currenFrame",
-			"clearInterval",
-			"{},\n",
-			"[Texture Packer](http://www.codeandweb.com/texturepacker);",
-			"game.map",
-			"])\n",
-			"';\n"
+			"size"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -847,23 +947,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Main.as",
+					"file": "src/com/cyberpunk/States/Protagonists/Character.as",
 					"settings":
 					{
-						"buffer_size": 609,
+						"buffer_size": 3217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								578,
-								578
+								1893,
+								1893
 							]
 						],
 						"settings":
@@ -957,35 +1057,144 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/ActionScript/ActionScript.tmLanguage",
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 437.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 1,
-					"file": "build-config.xml",
+					"file": "src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
 					"settings":
 					{
-						"buffer_size": 848,
+						"buffer_size": 874,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								749,
-								749
+								560,
+								560
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "build-config.xml",
+					"settings":
+					{
+						"buffer_size": 926,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								926,
+								926
 							]
 						],
 						"settings":
@@ -1090,19 +1299,136 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "com/cyberpunk/Game.as",
+					"buffer": 3,
+					"file": "cyberpunk.sublime-project",
 					"settings":
 					{
-						"buffer_size": 3743,
+						"buffer_size": 645,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2414,
-								2414
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
+					"settings":
+					{
+						"buffer_size": 4526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2408,
+								2423
 							]
 						],
 						"settings":
@@ -1200,7 +1526,240 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 55.0,
+						"translation.y": 1005.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/com/cyberpunk/States/Platforms/PlatformBase.as",
+					"settings":
+					{
+						"buffer_size": 353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								353,
+								353
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/com/cyberpunk/States/CollisionManager.as",
+					"settings":
+					{
+						"buffer_size": 2850,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1989,
+								1989
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1060.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1225,18 +1784,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1248,7 +1800,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 259.0
+		"height": 223.0
 	},
 	"output.find_results":
 	{
@@ -1268,6 +1820,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"tweenlite",
+				"greensock/TweenLite.as"
+			]
 		],
 		"width": 0.0
 	},
@@ -1287,6 +1843,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 268.0,
+	"side_bar_width": 233.0,
 	"status_bar_visible": true
 }

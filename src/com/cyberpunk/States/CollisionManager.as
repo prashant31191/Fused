@@ -17,10 +17,33 @@ package com.cyberpunk.States
 		private var platforms:Array;
 		private var bumping:Dictionary;
 		
-		private var leftBumpPoint:Point  = new Point(-20, 0);
-		private var rightBumpPoint:Point = new Point(20, 0);
-		private var upBumpPoint:Point    = new Point(0, -20);
-		private var downBumpPoint:Point  = new Point(0, 20);
+		private var leftBumpPointArray:Array = [
+			new Point(-48, 22)
+		];
+
+		private var rightBumpPointArray:Array = [
+			new Point(48, 12)
+		];
+
+		private var upBumpPointArray:Array = [
+			new Point(-48, -25), new Point(-27, -18), new Point(-14, -14),
+			new Point(4, -8),    new Point(18, -2),   new Point(27, 2),
+			new Point(35, 5),    new Point(45, 10)
+		];
+
+		private var downBumpPointArray:Array = [
+			new Point(-28, 17), new Point(-20, 19), new Point(-8, 20),
+			new Point(-2, 21),  new Point(4, 19),   new Point(14, 20),
+			new Point(20, 21),  new Point(27, 19),  new Point(35, 20),
+			new Point(44, 20)
+		];
+
+		private var directionArray:Array = [
+			{array: leftBumpPointArray,  direction:'left'}, 
+			{array: rightBumpPointArray, direction:'right'}, 
+			{array: downBumpPointArray,  direction:'down'}, 
+			{array: upBumpPointArray,    direction:'up'}
+		];
 		
 		private var speed:Point;
 		
@@ -46,39 +69,17 @@ package com.cyberpunk.States
 		
 		public function update(player:MovieClip):void
 		{
-			for (var key:String in bumping) {
+			for (var key:String in bumping) 
+			{
 				bumping[key] = false;
 			}
 
-			for (var i:int = 0; i < platforms.length; i++) {
-
-				var playerPos1:Point = new Point(player.x + leftBumpPoint.x, player.y + leftBumpPoint.y);
-				var playerPos2:Point = new Point(player.x + rightBumpPoint.x, player.y + rightBumpPoint.y);
-				var playerPos3:Point = new Point(player.x + upBumpPoint.x, player.y + upBumpPoint.y);
-				var playerPos4:Point = new Point(player.x + downBumpPoint.x, player.y + downBumpPoint.y);
-
-				playerPos1 = player.parent.localToGlobal(playerPos1);
-				playerPos2 = player.parent.localToGlobal(playerPos2);
-				playerPos3 = player.parent.localToGlobal(playerPos3);
-				playerPos4 = player.parent.localToGlobal(playerPos4);
-
-				speed.y = Config.Y_SPEED;
-
-				if (platforms[i].hitTestPoint(playerPos1.x, playerPos1.y, true)) {
-					bumping['left']  = true;
-				}
-				 
-				if (platforms[i].hitTestPoint(playerPos2.x, playerPos2.y, true)) {
-					bumping['right']  = true;
-				}
-				 
-				if (platforms[i].hitTestPoint(playerPos3.x, playerPos3.y, true)) {
-					bumping['up']  = true;
-				}
-
-				if (platforms[i].hitTestPoint(playerPos4.x, playerPos4.y, true)) {
-					bumping['down']  = true;
-				} 
+			for (var i:int = 0; i < platforms.length; i++) 
+			{
+				for( var z = 0; z < directionArray.length; z++ )
+				{
+					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
+				};
 			}
 			
 			if (bumping['left']) {
@@ -104,6 +105,20 @@ package com.cyberpunk.States
 					speed.y = 0;
 				}
 			} 
+		}
+
+		private function checkCollision(currentArray:Array, currentDirection:String, player:MovieClip, currentPlatform:MovieClip):void 
+		{
+			for( var m = 0; m < currentArray.length; m++ )
+			{
+				var playerPos:Point = new Point(player.x + currentArray[m].x, player.y + currentArray[m].y);
+				playerPos = player.parent.localToGlobal(playerPos);
+				speed.y = Config.Y_SPEED;
+				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
+					bumping[currentDirection]  = true;
+					break;
+				} 
+			};
 		}
 	}
 }

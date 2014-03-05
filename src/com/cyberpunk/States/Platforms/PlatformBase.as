@@ -12,5 +12,11 @@ package com.cyberpunk.States.Platforms
         {
             addChild(clip);
         }
+
+        public function lightOff():void 
+        {
+            
+        }
+
     }
 }
