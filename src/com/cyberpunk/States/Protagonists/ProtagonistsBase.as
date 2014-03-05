@@ -34,5 +34,10 @@ package com.cyberpunk.States.Protagonists
 		{
 			return this.speed;
 		}
+
+		public function die():void 
+		{
+			
+		}
     }
 }

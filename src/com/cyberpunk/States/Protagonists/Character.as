@@ -11,8 +11,6 @@ package com.cyberpunk.States.Protagonists
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
-	// import fl.transitions.Tween;
-	// import fl.motion.easing.Elastic;
 
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
@@ -23,16 +21,19 @@ package com.cyberpunk.States.Protagonists
 	 */
 	public class Character extends ProtagonistsBase
 	{
-		private var jumpSpeedLimit:int  = 80;
-		private var jumpSpeed:Number = jumpSpeedLimit;
 		private var key:Dictionary;
 		private var bumping:Dictionary;
 		private var jump:Boolean = false;
 		private var savedPlayerPos:Point;
-		private var gravity:int = 0.5;
+		private var gravity:Number = 1;
 
 		private var leftTween:TweenLite;
 		private var rightTween:TweenLite;
+
+		private var jumpAmount:Number = 5;
+		private var jumping:Boolean   = false;
+
+		private static const BASED_JUMP:Number = 5;
 		
 		public function Character(clip:MovieClip, stage:Stage) 
 		{
@@ -43,8 +44,6 @@ package com.cyberpunk.States.Protagonists
 			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
 
-
-			
 			addEventListener(Event.ENTER_FRAME, update);
 
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
@@ -58,36 +57,39 @@ package com.cyberpunk.States.Protagonists
 		
 		private function update(e:Event):void
 		{
+			speed.y = Math.min(Config.Y_SPEED, speed.y + gravity);
+
+			if (bumping && bumping['down']) {
+				speed.y = 0;
+				jump = false;
+			}
+			
 			if (key['up'] && bumping['down'] && !jump) mainJump();
+			
 			if (key['left']) {
 				speed.x = -8;
 				if (clip.rotationY == 0)
 					leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
 			}
+			
 			else if (key['right']) {
 				speed.x = 8;
 				if (clip.rotationY == 180)
 					rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
 			}
+
 			else speed.x = 0;
 
-			if (jump) {
-        		if (clip.y > savedPlayerPos.y - jumpSpeedLimit) {
-    				gravity = -20;
-        		} else {
-        			gravity = 0.5;
-        			jump = false;
-        		}
-			}
-			
-		    speed.y += gravity;
+			if (jumping) speed.y -= jumpAmount;
+			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);
+
 			clip.x += speed.x;
 			clip.y += speed.y;
 		}
 
 		private function mainJump():void 
 		{
-			savedPlayerPos = new Point(clip.x, clip.y);
+			jumping = true;
 			jump = true;
 		}
 
@@ -109,8 +111,11 @@ package com.cyberpunk.States.Protagonists
 		{
 			var keyCode:int = evt.keyCode;
 			
-			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER)
-				key['up'] = false;
+			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER) {
+				key['up']  = false;
+				jumping    = false;
+				jumpAmount = BASED_JUMP;
+			}
 			else if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
 				key['down'] = false;
 			if (keyCode == Config.LEFT_ARROW || keyCode == Config.A_LETTER)
@@ -120,4 +125,4 @@ package com.cyberpunk.States.Protagonists
 		}
 	}
 }
- 
+ // 

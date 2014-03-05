@@ -98,6 +98,7 @@ package com.cyberpunk.States.Platforms
 			platform   = new ClassReference();
 			platform.x = randomPoint.x;
 			platform.y = randomPoint.y;
+			platform.scaleY = platform.scaleX = 0.9;
 
 			if (!checkPlatforms(platform)) {
 				platform = null;

@@ -94,17 +94,17 @@ package com.cyberpunk.States
 				}
 			}
 			 
-			if (bumping['up']) {
-				if (speed.y < 0) {
-					speed.y += 1;
-				}
-			}
+			// if (bumping['up']) {
+			// 	if (speed.y < 0) {
+			// 		speed.y += 1;
+			// 	}
+			// }
 			 
-			if (bumping['down']) {
-				if (speed.y > 0) {
-					speed.y = 0;
-				}
-			} 
+			// if (bumping['down']) {
+			// 	if (speed.y > 0) {
+			// 		speed.y = 0;
+			// 	}
+			// } 
 		}
 
 		private function checkCollision(currentArray:Array, currentDirection:String, player:MovieClip, currentPlatform:MovieClip):void 
@@ -113,7 +113,7 @@ package com.cyberpunk.States
 			{
 				var playerPos:Point = new Point(player.x + currentArray[m].x, player.y + currentArray[m].y);
 				playerPos = player.parent.localToGlobal(playerPos);
-				speed.y = Config.Y_SPEED;
+				// speed.y = Config.Y_SPEED;
 				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
 					bumping[currentDirection]  = true;
 					break;
