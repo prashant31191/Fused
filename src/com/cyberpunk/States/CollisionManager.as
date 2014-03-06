@@ -76,7 +76,7 @@ package com.cyberpunk.States
 
 			for (var i:int = 0; i < platforms.length; i++) 
 			{
-				for( var z = 0; z < directionArray.length; z++ )
+				for( var z:int = 0; z < directionArray.length; z++ )
 				{
 					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
 				};
@@ -94,28 +94,23 @@ package com.cyberpunk.States
 				}
 			}
 			 
-			// if (bumping['up']) {
-			// 	if (speed.y < 0) {
-			// 		speed.y += 1;
-			// 	}
-			// }
-			 
-			// if (bumping['down']) {
-			// 	if (speed.y > 0) {
-			// 		speed.y = 0;
-			// 	}
-			// } 
+			if (bumping['up']) {
+				if (speed.y < 0) {
+					speed.y += 1;
+				}
+			}
 		}
 
 		private function checkCollision(currentArray:Array, currentDirection:String, player:MovieClip, currentPlatform:MovieClip):void 
 		{
-			for( var m = 0; m < currentArray.length; m++ )
+			for( var m:int = 0; m < currentArray.length; m++ )
 			{
 				var playerPos:Point = new Point(player.x + currentArray[m].x, player.y + currentArray[m].y);
 				playerPos = player.parent.localToGlobal(playerPos);
-				// speed.y = Config.Y_SPEED;
 				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
-					bumping[currentDirection]  = true;
+					speed.y = currentPlatform.velocity;
+					if (currentPlatform.velocity > 0) 
+						bumping[currentDirection] = true;
 					break;
 				} 
 			};

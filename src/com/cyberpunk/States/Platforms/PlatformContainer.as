@@ -94,19 +94,41 @@ package com.cyberpunk.States.Platforms
 
 			var currentIndexPos:int  = int(Math.random() * platforms.length);
 			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos]) as Class;
+			var currentPlatformDesign:int;
+			var savedBrickPlatform:MovieClip;
+			var clip:MovieClip;
+			var currentPlatformType:MovieClip;
+			var brickType:int;
 
-			platform   = new ClassReference();
-			platform.x = randomPoint.x;
-			platform.y = randomPoint.y;
-			platform.scaleY = platform.scaleX = 0.9;
+			platform = new ClassReference();
 
-			if (!checkPlatforms(platform)) {
+			var brickAmount:int = Utils.getRandomInt(2, platform.amountOfBricks);
+
+			for (var z:int = 0; z < brickAmount; z++)
+			{
+			    brickType = Utils.getRandomInt(1, platform.brickClipAvailable);
+			    clip = platform._instance['mType' + brickType];
+
+		    	if (z == 0) {
+		    		clip.x = randomPoint.x;
+					clip.y = randomPoint.y;
+					clip.scaleY = clip.scaleX = 0.9;
+					savedBrickPlatform = clip;
+		    	} else {
+		    		if (platform.platformAxis == 'X_AXIS') clip.x = savedBrickPlatform.x + clip.width;
+		    		else clip.y = savedBrickPlatform.y + clip.height;
+					clip.scaleY = clip.scaleX = savedBrickPlatform.scaleY = savedBrickPlatform.scaleX;
+					savedBrickPlatform = clip;
+		    	}
+			};
+
+			/*if (!checkPlatforms(platform)) {
 				platform = null;
 				generatePlatforms(rect);
-			}
+			}*/
 		}
 		
-		private function checkPlatforms(currentPlatform:*):Boolean 
+		private function checkPlatforms(currentPlatform:MovieClip):Boolean 
 		{
 			if (currentPlatform.hitTestObject(player)) {
 				return false;

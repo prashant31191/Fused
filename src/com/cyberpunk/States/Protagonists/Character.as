@@ -6,14 +6,15 @@ package com.cyberpunk.States.Protagonists
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import com.cyberpunk.Setup.Config;
+	import com.cyberpunk.States.Particles.*;
 	import flash.geom.Point;
 	import flash.utils.Timer;	
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
-
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
+	import com.cyberpunk.Helpers.Utils;
 	
 	/**
 	 * ...
@@ -33,6 +34,9 @@ package com.cyberpunk.States.Protagonists
 		private var jumpAmount:Number = 5;
 		private var jumping:Boolean   = false;
 
+		private var particleHolder:ParticleHolder;
+		private var particle:MovieClip;
+
 		private static const BASED_JUMP:Number = 5;
 		
 		public function Character(clip:MovieClip, stage:Stage) 
@@ -40,7 +44,10 @@ package com.cyberpunk.States.Protagonists
 			super (clip);
 
 			key = new Dictionary();
-			
+
+			particleHolder    = new ParticleHolder(clip);
+			particle 		  = particleHolder._clip;
+
 			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
 
@@ -57,6 +64,23 @@ package com.cyberpunk.States.Protagonists
 		
 		private function update(e:Event):void
 		{
+			var scaleRandomNbr:Number = Utils.getRandomInt(1, 2);
+			var scaleRandomNbr2:Number = Utils.getRandomInt(-1, 1);
+
+			// particleHolder.create(
+			// 	2000, 
+			// 	30, { 
+			// 		x: clip.x, 
+			// 		y: clip.y, 
+			// 		scaleX: scaleRandomNbr,
+			// 		scaleY: scaleRandomNbr,
+			// 		alpha: scaleRandomNbr
+			// 	}, { 
+			// 		x: scaleRandomNbr2, 
+			// 		y: scaleRandomNbr2
+			// 	}
+			// );
+
 			speed.y = Math.min(Config.Y_SPEED, speed.y + gravity);
 
 			if (bumping && bumping['down']) {
@@ -67,13 +91,13 @@ package com.cyberpunk.States.Protagonists
 			if (key['up'] && bumping['down'] && !jump) mainJump();
 			
 			if (key['left']) {
-				speed.x = -8;
+				speed.x = -Config.X_SPEED;
 				if (clip.rotationY == 0)
 					leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
 			}
 			
 			else if (key['right']) {
-				speed.x = 8;
+				speed.x = Config.X_SPEED;
 				if (clip.rotationY == 180)
 					rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
 			}

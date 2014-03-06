@@ -6,17 +6,47 @@ package com.cyberpunk.States.Platforms
 	 * ...
 	 * @author LilyDrop
 	 */
-    public class PlatformBase extends MovieClip
+    public class PlatformBase extends MovieClip implements IPlatform
     {
-        public function PlatformBase (clip:MovieClip)
+        protected var clip:MovieClip;
+        protected var brickType:Number;
+        protected var brickAmount:Number;
+        protected var brickAxis:String;
+
+        public function PlatformBase (clip:MovieClip, brick:Object)
         {
+            this.clip = clip;
+
+            brickType   = brick.type;
+            brickAmount = brick.amount;
+            brickAxis   = brick.axis;
+
             addChild(clip);
         }
 
-        public function lightOff():void 
+        public function get _instance():MovieClip 
         {
-            
+            return clip;
         }
 
+        public function get brickClipAvailable():Number 
+        {
+            return brickType;
+        }
+
+        public function get amountOfBricks():Number 
+        {
+            return brickAmount;
+        }
+
+        public function get platformAxis():String 
+        {
+            return brickAxis;
+        }
+
+        public function get velocity():Number 
+        {
+            return 0;
+        }
     }
 }

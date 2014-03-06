@@ -34,7 +34,7 @@ package com.cyberpunk
 			_stage = main._stage;
 			
 			character = new Character(assets.mCharacter, _stage);
-			character.playerSpeed = new Point(Config.X_SPEED, Config.Y_SPEED);
+			character.playerSpeed = new Point(0, Config.Y_SPEED);
 
 			background        = new InfiniteScrolling();
 			platformContainer = new PlatformContainer(character.playerClip);

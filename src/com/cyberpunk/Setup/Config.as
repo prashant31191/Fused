@@ -21,7 +21,7 @@ package com.cyberpunk.Setup
 		public static const STAGE_WIDTH:Number  = 640;
 		public static const STAGE_HEIGHT:Number = 360;
 		
-		public static const Y_SPEED:Number = 5;
-		public static const X_SPEED:Number = 0;
+		public static const Y_SPEED:Number = 10;
+		public static const X_SPEED:Number = 10;
 	}
 }

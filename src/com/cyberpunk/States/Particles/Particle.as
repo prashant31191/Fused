@@ -4,7 +4,7 @@ package com.cyberpunk.States.Particles
 
     public class Particle 
     {
-    	protected var particle:PauseableMovieClip;
+    	protected var particle:MovieClip;
 		protected var propertiesUpdate:Object;
 
 		protected var lifeSpan:Number  = 0;
@@ -12,6 +12,8 @@ package com.cyberpunk.States.Particles
 
         public function Particle (clip:MovieClip, lifeSpan:Number, rateDeath:Number, propertiesUpdate:Object)
         {
+        	particle = clip;
+        	
             this.lifeSpan 			= lifeSpan;
 			this.rateDeath 			= rateDeath;
 			this.propertiesUpdate 	= propertiesUpdate;
@@ -23,15 +25,15 @@ package com.cyberpunk.States.Particles
 
 			for (var i:String in propertiesUpdate)
 			{
-				particle.clip[i] += propertiesUpdate[i];
+				particle[i] += propertiesUpdate[i];
 			}
 
-			if (particle.frame < particle.numFrames)
+			if (particle.currentFrame < particle.totalFrames)
             {
                 particle.nextFrame();
             }
 
-            if (particle.frame == particle.numFrames)
+            if (particle.currentFrame == particle.totalFrames)
             {
             	particle.gotoAndStop(1);
             }
@@ -39,7 +41,7 @@ package com.cyberpunk.States.Particles
 
 		public function removeClip():void
 		{
-			particle.clip.parent.removeChild(particle.clip);
+			particle.parent.removeChild(particle);
 		}
 
 		public function get _lifeSpan():Number

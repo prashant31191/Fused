@@ -1,6 +1,8 @@
 package com.cyberpunk.States.Particles
 {
 	import flash.display.Sprite;
+	import flash.display.MovieClip;
+	import flash.events.Event;
 
     public class ParticleHolder extends Sprite
     {
@@ -15,7 +17,7 @@ package com.cyberpunk.States.Particles
 			addEventListener(Event.ENTER_FRAME, update);
         }
 
-        protected function update():void
+        protected function update(e:Event):void
 		{
 			updateParticles();
 		}
@@ -35,7 +37,7 @@ package com.cyberpunk.States.Particles
 
 		public function create(lifeSpan:Number, deathRate:Number, clipParams:Object, updateParams:Object):void
 		{
-			var particleGraphics:Class = holder.loaderInfo.applicationDomain.getDefinition("Particle") as Class;
+			var particleGraphics:Class = holder.loaderInfo.applicationDomain.getDefinition("CharacterParticle") as Class;
 			var clip:MovieClip = new particleGraphics() as MovieClip;
 
 			for (var i:String in clipParams)
