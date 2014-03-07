@@ -7,6 +7,7 @@ package com.cyberpunk.States
 	import com.cyberpunk.Setup.Config;
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
+	import flash.geom.Rectangle;
 
 	/**
 	 * ...
@@ -16,26 +17,43 @@ package com.cyberpunk.States
 	{
 		private var platforms:Array;
 		private var bumping:Dictionary;
+		private var test:MovieClip;
 		
+		// private var leftBumpPointArray:Array = [
+		// 	new Point(-48, 22)
+		// ];
+
 		private var leftBumpPointArray:Array = [
-			new Point(-48, 22)
+			new Point(-20, 0)
 		];
+
+		// private var rightBumpPointArray:Array = [
+		// 	new Point(48, 12)
+		// ];
 
 		private var rightBumpPointArray:Array = [
-			new Point(48, 12)
+			new Point(20, 0)
 		];
+
+		// private var upBumpPointArray:Array = [
+		// 	new Point(-48, -25), new Point(-27, -18), new Point(-14, -14),
+		// 	new Point(4, -8),    new Point(18, -2),   new Point(27, 2),
+		// 	new Point(35, 5),    new Point(45, 10)
+		// ];
 
 		private var upBumpPointArray:Array = [
-			new Point(-48, -25), new Point(-27, -18), new Point(-14, -14),
-			new Point(4, -8),    new Point(18, -2),   new Point(27, 2),
-			new Point(35, 5),    new Point(45, 10)
+			new Point(0, -20)
 		];
 
+		// private var downBumpPointArray:Array = [
+		// 	new Point(-28, 17), new Point(-20, 19), new Point(-8, 20),
+		// 	new Point(-2, 21),  new Point(4, 19),   new Point(14, 20),
+		// 	new Point(20, 21),  new Point(27, 19),  new Point(35, 20),
+		// 	new Point(44, 20)
+		// ];
+
 		private var downBumpPointArray:Array = [
-			new Point(-28, 17), new Point(-20, 19), new Point(-8, 20),
-			new Point(-2, 21),  new Point(4, 19),   new Point(14, 20),
-			new Point(20, 21),  new Point(27, 19),  new Point(35, 20),
-			new Point(44, 20)
+			new Point(0, 20)
 		];
 
 		private var directionArray:Array = [
@@ -49,6 +67,7 @@ package com.cyberpunk.States
 		
 		public function CollisionManager() 
 		{
+			this.test = test;
 			bumping = new Dictionary();
 		}
 
@@ -108,10 +127,10 @@ package com.cyberpunk.States
 				var playerPos:Point = new Point(player.x + currentArray[m].x, player.y + currentArray[m].y);
 				playerPos = player.parent.localToGlobal(playerPos);
 				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
-					speed.y = currentPlatform.velocity;
-					if (currentPlatform.velocity > 0) 
-						bumping[currentDirection] = true;
-					break;
+					// speed.y = currentPlatform.velocity;
+					// if (currentPlatform.velocity > 0) 
+					// 	bumping[currentDirection] = true;
+					// break;
 				} 
 			};
 		}

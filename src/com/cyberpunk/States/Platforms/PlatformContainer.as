@@ -11,6 +11,8 @@ package com.cyberpunk.States.Platforms
 	import com.cyberpunk.Setup.Config;
 	import flash.geom.Rectangle;
 	import flash.external.ExternalInterface;
+	import flash.display.BitmapData;
+	import flash.display.Bitmap;
 
 	/**
 	 * ...
@@ -21,13 +23,18 @@ package com.cyberpunk.States.Platforms
 		private var player:MovieClip;
 		private var platforms:Array;
 		private var platformPlaced:Array;
+		private var savedCheckedPlatform:Array;
+		private var platformShape:MovieClip;
+		private var bricks:Array;
 		private var platform:MovieClip;
 		private var savedPlatform:*;
 		private var hasPlatformGenerated:Boolean = false;
 		private var addPlatRect:Rectangle;
 		private var removePlatRect:Rectangle;
+		private var platformRect:Array = [];
 		private var randomPlatform:int;
 		private var savedPlayerPos:Point;
+		private var clipShape:MovieClip;
 		
 		public function PlatformContainer(player:MovieClip) 
 		{
@@ -40,8 +47,9 @@ package com.cyberpunk.States.Platforms
 						  'com.cyberpunk.States.Platforms.Platform3'
 			];
 
-			randomPlatform = Utils.getRandomInt(10, 20);
-			platformPlaced = new Array();
+			randomPlatform       = Utils.getRandomInt(10, 20);
+			platformPlaced       = new Array();
+			savedCheckedPlatform = new Array();
 
 			var addingPlatformRect:Rectangle = new Rectangle(
 				((player.x + (player.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
@@ -50,12 +58,21 @@ package com.cyberpunk.States.Platforms
 				Config.STAGE_HEIGHT * 3
 			);
 
+			ExternalInterface.call('console.log', 'COLLISION: ' + randomPlatform);
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
 				generatePlatforms(addingPlatformRect);
-				platformPlaced.push(platform);
-				addChild(platform);
-				savedPlatform = platform;
+
+				// ExternalInterface.call('console.log', checkPlatforms(platformPlaced, platformRect));
+				if (!checkPlatforms(platformPlaced, platformRect)) {
+					ExternalInterface.call('console.log', 'COLLISION')
+					// platform = null;
+					// removeChild(clipShape);
+					// generatePlatforms(rect);
+				}		
+				savedCheckedPlatform.push(platformPlaced);
+				// platformPlaced.push(platformShape);
+				// savedPlatform = bricks;
 			}
 		}
 
@@ -94,73 +111,100 @@ package com.cyberpunk.States.Platforms
 
 			var currentIndexPos:int  = int(Math.random() * platforms.length);
 			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos]) as Class;
-			var currentPlatformDesign:int;
 			var savedBrickPlatform:MovieClip;
-			var clip:MovieClip;
-			var currentPlatformType:MovieClip;
-			var brickType:int;
 
 			platform = new ClassReference();
+			bricks = new Array();
 
+			var platformClips:Array = [];
 			var brickAmount:int = Utils.getRandomInt(2, platform.amountOfBricks);
+
+			for(var i:int = 0; i < platform._instance.numChildren; i++)
+			{
+				platformClips.push(platform._instance.getChildAt(i));
+			};
 
 			for (var z:int = 0; z < brickAmount; z++)
 			{
-			    brickType = Utils.getRandomInt(1, platform.brickClipAvailable);
-			    clip = platform._instance['mType' + brickType];
+				var randomIndex:int = int(Math.random() * platformClips.length);
+				var ClassRef:Class = getDefinitionByName(platform.platformTypeName[randomIndex]) as Class;
+				var currentClip:MovieClip = new ClassRef();
+				
+				currentClip.scaleX = currentClip.scaleY = 0.9;
 
-		    	if (z == 0) {
-		    		clip.x = randomPoint.x;
-					clip.y = randomPoint.y;
-					clip.scaleY = clip.scaleX = 0.9;
-					savedBrickPlatform = clip;
-		    	} else {
-		    		if (platform.platformAxis == 'X_AXIS') clip.x = savedBrickPlatform.x + clip.width;
-		    		else clip.y = savedBrickPlatform.y + clip.height;
-					clip.scaleY = clip.scaleX = savedBrickPlatform.scaleY = savedBrickPlatform.scaleX;
-					savedBrickPlatform = clip;
-		    	}
+				if (z == 0) {
+					currentClip.x = randomPoint.x;
+					currentClip.y = randomPoint.y;
+				} else {
+					if (platform.platformAxis == 'X_AXIS') {
+						currentClip.x = savedBrickPlatform.x + currentClip.width;
+						currentClip.y = savedBrickPlatform.y;
+					} else {
+						currentClip.x = savedBrickPlatform.x;
+						currentClip.y = savedBrickPlatform.y + currentClip.height;
+					}
+				}
+
+				addChild(currentClip);
+				bricks.push(currentClip);
+				savedBrickPlatform = currentClip;
 			};
 
-			/*if (!checkPlatforms(platform)) {
-				platform = null;
-				generatePlatforms(rect);
-			}*/
-		}
-		
-		private function checkPlatforms(currentPlatform:MovieClip):Boolean 
-		{
-			if (currentPlatform.hitTestObject(player)) {
-				return false;
-			}
+			for(var j:int = bricks.length - 1; j >= 0; j--)
+			{
+				clipShape = new MovieClip();
+			    clipShape.graphics.beginFill(0x333333, 0); 
+			    clipShape.graphics.drawRect(bricks[j].x, bricks[j].y, bricks[j].width, bricks[j].height);     
+			    clipShape.graphics.endFill();
+			    addChild(clipShape);
+				platformPlaced.push(clipShape);
 
-			var xOffset:int = 40;
-			var yOffset:int = 40;
-
-			var currentRect:Rectangle = new Rectangle (  
-				currentPlatform.x,
-				currentPlatform.y,
-				currentPlatform.width,
-				currentPlatform.height
-			);
-
-			currentRect.inflate(xOffset, yOffset);
-			
-			for (var i:int = 0; i < platformPlaced.length; i++) {
-				var savedPlatform:* = platformPlaced[i];
-				var rect:Rectangle = new Rectangle (  
-					savedPlatform.x,
-					savedPlatform.y,
-					savedPlatform.width,
-					savedPlatform.height
+				var currentRect:Rectangle = new Rectangle (  
+					bricks[j].x, 
+					bricks[j].y, 
+					bricks[j].width, 
+					bricks[j].height
 				);
 
-				rect.inflate(xOffset, yOffset);
-
-				if (rect.intersects(currentRect)) {
+				platformRect.push(currentRect);
+			};
+		}
+		
+		private function checkPlatforms(currentPlatformArray:Array, platformRect:Array):Boolean 
+		{
+			for( var k = 0; k < currentPlatformArray.length; k++ )
+			{
+				if (currentPlatformArray[k].hitTestObject(player)) {
 					return false;
 				}
+
+				var xOffset:int = 40;
+				var yOffset:int = 40;
+
+				var currentRect:Rectangle = new Rectangle (  
+					platformRect[k].x,
+					platformRect[k].y,
+					platformRect[k].width,
+					platformRect[k].height
+				);
+
+				currentRect.inflate(xOffset, yOffset);
+
+				for( var l = savedCheckedPlatform.length - 1; l >= 0; l-- )
+				{
+					var rect:Rectangle = new Rectangle (
+						savedCheckedPlatform[l].x,
+						savedCheckedPlatform[l].y,
+						savedCheckedPlatform[l].width,
+						savedCheckedPlatform[l].height
+					);
+
+					if (rect.intersects(currentRect)) {
+						return false;
+					}
+				};
 			}
+		
 			return true;
 		}
 		
@@ -173,14 +217,14 @@ package com.cyberpunk.States.Platforms
 				Config.STAGE_HEIGHT
 			);
 
-				randomPlatform = Utils.getRandomInt(5, 8);
+			randomPlatform = Utils.getRandomInt(5, 8);
 
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
 				generatePlatforms(addPlatRect);
-				platformPlaced.push(platform);
-				addChild(platform);
-				savedPlatform = platform;
+				// platformPlaced.push(platformShape);
+				// addChild(platform);
+				// savedPlatform = platform;
 			}
 		}
 

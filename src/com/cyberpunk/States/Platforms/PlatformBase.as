@@ -9,7 +9,6 @@ package com.cyberpunk.States.Platforms
     public class PlatformBase extends MovieClip implements IPlatform
     {
         protected var clip:MovieClip;
-        protected var brickType:Number;
         protected var brickAmount:Number;
         protected var brickAxis:String;
 
@@ -17,7 +16,6 @@ package com.cyberpunk.States.Platforms
         {
             this.clip = clip;
 
-            brickType   = brick.type;
             brickAmount = brick.amount;
             brickAxis   = brick.axis;
 
@@ -27,11 +25,6 @@ package com.cyberpunk.States.Platforms
         public function get _instance():MovieClip 
         {
             return clip;
-        }
-
-        public function get brickClipAvailable():Number 
-        {
-            return brickType;
         }
 
         public function get amountOfBricks():Number 
@@ -47,6 +40,11 @@ package com.cyberpunk.States.Platforms
         public function get velocity():Number 
         {
             return 0;
+        }
+
+        public function get platformTypeName():Array 
+        {
+            return new Array();
         }
     }
 }

@@ -103,7 +103,7 @@ package com.cyberpunk.States.Protagonists
 			}
 
 			else speed.x = 0;
-
+			
 			if (jumping) speed.y -= jumpAmount;
 			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);
 

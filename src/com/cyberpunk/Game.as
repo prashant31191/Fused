@@ -69,7 +69,7 @@ package com.cyberpunk
 			
 			platformContainer.update();
 
-			collisionManager.platformsArray = platformContainer.platformArray;
+			collisionManager.platformsArray = platformContainer.platformArray;			
 			collisionManager.update(character.playerClip);
 
 			character.bumpingKeys = collisionManager.bumpingKeys;
