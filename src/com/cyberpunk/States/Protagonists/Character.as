@@ -51,7 +51,7 @@ package com.cyberpunk.States.Protagonists
 			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
 
-			addEventListener(Event.ENTER_FRAME, update);
+			// addEventListener(Event.ENTER_FRAME, update);
 
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUp);
@@ -61,11 +61,34 @@ package com.cyberpunk.States.Protagonists
 		{
 			this.bumping = bumping;
 		}
-		
-		private function update(e:Event):void
+
+		public function calculateSpeed():void 
 		{
-			var scaleRandomNbr:Number = Utils.getRandomInt(1, 2);
-			var scaleRandomNbr2:Number = Utils.getRandomInt(-1, 1);
+			if (speed.y < 10) {
+				speed.y += gravity;
+			}
+
+			if (bumping != null && bumping['down']) {
+				jumpAmount = 5;
+				speed.y = 0;
+				jump = false;
+			}
+
+			if (key['up'] && bumping['down'] && !jump) mainJump();
+			if (jumping) speed.y -= jumpAmount;
+			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);
+
+			speed.x = 0;
+
+			if (key['left'])  speed.x = -Config.X_SPEED;
+			else if (key['right']) speed.x = Config.X_SPEED;
+
+		}
+
+		public function update():void
+		{
+			// var scaleRandomNbr:Number = Utils.getRandomInt(1, 2);
+			// var scaleRandomNbr2:Number = Utils.getRandomInt(-1, 1);
 
 			// particleHolder.create(
 			// 	2000, 
@@ -81,31 +104,36 @@ package com.cyberpunk.States.Protagonists
 			// 	}
 			// );
 
-			speed.y = Math.min(Config.Y_SPEED, speed.y + gravity);
+			/*speed.y = Math.min(Config.Y_SPEED, speed.y + gravity);
 
-			if (bumping && bumping['down']) {
+			if (bumping != null && bumping['down']) {
+				jumpAmount = 5;
 				speed.y = 0;
 				jump = false;
 			}
-			
+
 			if (key['up'] && bumping['down'] && !jump) mainJump();
-			
-			if (key['left']) {
+
+			if (bumping != null && bumping['up']) {
+				speed.y = 0;
+			}
+
+			if (key['left'] && !bumping['left']) {
 				speed.x = -Config.X_SPEED;
-				if (clip.rotationY == 0)
-					leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
+				// if (clip.rotationY == 0)
+				// 	leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
 			}
 			
-			else if (key['right']) {
+			else if (key['right'] && !bumping['right']) {
 				speed.x = Config.X_SPEED;
-				if (clip.rotationY == 180)
-					rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
+				// if (clip.rotationY == 180)
+				// 	rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
 			}
 
 			else speed.x = 0;
-			
+
 			if (jumping) speed.y -= jumpAmount;
-			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);
+			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);*/
 
 			clip.x += speed.x;
 			clip.y += speed.y;

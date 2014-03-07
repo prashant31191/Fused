@@ -65,12 +65,14 @@ package com.cyberpunk
 			var ax:Number = ((_stage.stageWidth / 2) - assets.mouseX ) / (_stage.stageWidth / 2);
 			var ay:Number = ((_stage.stageHeight / 2) - assets.mouseY) / (_stage.stageHeight / 2);
 
+			character.calculateSpeed();
+			collisionManager.platformsArray = platformContainer.platformArray;			
+			collisionManager.update(character);
+			character.update();
+
 			background.move(-character.currentPlayerSpeed.x, -character.currentPlayerSpeed.y);
-			
 			platformContainer.update();
 
-			collisionManager.platformsArray = platformContainer.platformArray;			
-			collisionManager.update(character.playerClip);
 
 			character.bumpingKeys = collisionManager.bumpingKeys;
 		}

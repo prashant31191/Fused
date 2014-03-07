@@ -8,6 +8,7 @@ package com.cyberpunk.States
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
 	import flash.geom.Rectangle;
+	import com.cyberpunk.States.Protagonists.Character;
 
 	/**
 	 * ...
@@ -86,7 +87,7 @@ package com.cyberpunk.States
 			return this.bumping;
 		}
 		
-		public function update(player:MovieClip):void
+		public function update(player:Character):void
 		{
 			for (var key:String in bumping) 
 			{
@@ -100,37 +101,35 @@ package com.cyberpunk.States
 					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
 				};
 			}
-			
-			if (bumping['left']) {
-				if (speed.x < 0) {
-					speed.x += 1;
-				}
-			}
-			 
-			if (bumping['right']) {
-				if (speed.x > 0) {
-					speed.x -= 1;
-				}
-			}
-			 
-			if (bumping['up']) {
-				if (speed.y < 0) {
-					speed.y += 1;
-				}
-			}
 		}
 
-		private function checkCollision(currentArray:Array, currentDirection:String, player:MovieClip, currentPlatform:MovieClip):void 
+		private function checkCollision(currentArray:Array, currentDirection:String, player:Character, currentPlatform:MovieClip):void 
 		{
+			var playerMc:MovieClip = player.playerClip;
+			var playerSpeed:Point  = player.currentPlayerSpeed;
+
 			for( var m:int = 0; m < currentArray.length; m++ )
 			{
-				var playerPos:Point = new Point(player.x + currentArray[m].x, player.y + currentArray[m].y);
-				playerPos = player.parent.localToGlobal(playerPos);
+				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
+				playerPos = playerMc.parent.localToGlobal(playerPos);
 				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
-					// speed.y = currentPlatform.velocity;
-					// if (currentPlatform.velocity > 0) 
-					// 	bumping[currentDirection] = true;
-					// break;
+					switch(currentDirection)
+					{
+						case 'left':
+							playerSpeed.x = 0;
+							break;
+						case 'right':
+							playerSpeed.x = 0;
+							break;
+						case 'up':
+							playerSpeed.y = 0;
+							break;
+						case 'down':
+							playerSpeed.y = 0;
+							break;
+					}
+					bumping[currentDirection] = true;
+					break;
 				} 
 			};
 		}
