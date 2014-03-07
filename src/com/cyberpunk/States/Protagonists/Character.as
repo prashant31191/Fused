@@ -51,8 +51,6 @@ package com.cyberpunk.States.Protagonists
 			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
 
-			// addEventListener(Event.ENTER_FRAME, update);
-
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUp);
 		}
@@ -87,54 +85,6 @@ package com.cyberpunk.States.Protagonists
 
 		public function update():void
 		{
-			// var scaleRandomNbr:Number = Utils.getRandomInt(1, 2);
-			// var scaleRandomNbr2:Number = Utils.getRandomInt(-1, 1);
-
-			// particleHolder.create(
-			// 	2000, 
-			// 	30, { 
-			// 		x: clip.x, 
-			// 		y: clip.y, 
-			// 		scaleX: scaleRandomNbr,
-			// 		scaleY: scaleRandomNbr,
-			// 		alpha: scaleRandomNbr
-			// 	}, { 
-			// 		x: scaleRandomNbr2, 
-			// 		y: scaleRandomNbr2
-			// 	}
-			// );
-
-			/*speed.y = Math.min(Config.Y_SPEED, speed.y + gravity);
-
-			if (bumping != null && bumping['down']) {
-				jumpAmount = 5;
-				speed.y = 0;
-				jump = false;
-			}
-
-			if (key['up'] && bumping['down'] && !jump) mainJump();
-
-			if (bumping != null && bumping['up']) {
-				speed.y = 0;
-			}
-
-			if (key['left'] && !bumping['left']) {
-				speed.x = -Config.X_SPEED;
-				// if (clip.rotationY == 0)
-				// 	leftTween = new TweenLite(clip, 0.3, {rotationY: 180, ease:Elastic});
-			}
-			
-			else if (key['right'] && !bumping['right']) {
-				speed.x = Config.X_SPEED;
-				// if (clip.rotationY == 180)
-				// 	rightTween = new TweenLite(clip, 0.3, {rotationY: 0, ease:Elastic});
-			}
-
-			else speed.x = 0;
-
-			if (jumping) speed.y -= jumpAmount;
-			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);*/
-
 			clip.x += speed.x;
 			clip.y += speed.y;
 		}

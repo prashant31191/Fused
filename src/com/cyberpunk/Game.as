@@ -47,8 +47,8 @@ package com.cyberpunk
 
 			assets.mPlatformContainer.addChild(platformContainer);
 			
-			_stage.addEventListener(Event.ENTER_FRAME, cameraFollowCharacter);
 			_stage.addEventListener(Event.ENTER_FRAME, update);
+			_stage.addEventListener(Event.ENTER_FRAME, cameraFollowCharacter);
 		}
 
 		private function cameraFollowCharacter(e:Event):void 
@@ -72,7 +72,6 @@ package com.cyberpunk
 
 			background.move(-character.currentPlayerSpeed.x, -character.currentPlayerSpeed.y);
 			platformContainer.update();
-
 
 			character.bumpingKeys = collisionManager.bumpingKeys;
 		}
