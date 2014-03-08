@@ -25,7 +25,15 @@ package com.cyberpunk.States
 		// ];
 
 		private var leftBumpPointArray:Array = [
-			new Point(-20, 0)
+			new Point(-7.5, -13.9), new Point(-9.1, -12.6), new Point(-13.5, -10.5), new Point(-16, -6.5),  new Point(-18.9, -3.2),
+			new Point(-18, -1.1),   new Point(-17.4, 0.8),  new Point(-17.6, -4.6),  new Point(16.4, -6.1), new Point(-15.5, -8.1),
+			new Point(-13.9, -0.4), new Point(-15.6, -4.1), new Point(-6.2, -1.1),   new Point(-8.2, 0.9),  new Point(-9.5, 2),
+			new Point(-10.8, 4.2),  new Point(-12, 6.1),    new Point(-12.9, 6.9),   new Point(-10.2, 8.6), new Point(-8.4, 10.4),
+			new Point(-6.4, 12.1),  new Point(-4.6, 14),    new Point(-4, 16.9),     new Point(-3, 18.9),   new Point(-2.5, 19.8),
+			new Point(0.6, 22.9),   new Point(1.1, 24.9),   new Point(1.1, 26.1),
+			new Point(0.2, -24.4),  new Point(-1, -24),    new Point(1.5, -24),    new Point(3.9, -22.8),  new Point(-2.2, -23.1),
+			new Point(-2.9, -20.6), new Point(-2, -18.4),  new Point(-1.4, -16.9), new Point(-1.1, -14.5), new Point(1.9, -14.9),
+			new Point(1.4, -16.9),  new Point(2.8, -17.5), new Point(4.1, -15.9),  new Point(-5.6, -15)
 		];
 
 		// private var rightBumpPointArray:Array = [
@@ -43,7 +51,7 @@ package com.cyberpunk.States
 		// ];
 
 		private var upBumpPointArray:Array = [
-			new Point(0, -20)
+			new Point(0.2, -24.4)
 		];
 
 		// private var downBumpPointArray:Array = [
@@ -54,7 +62,7 @@ package com.cyberpunk.States
 		// ];
 
 		private var downBumpPointArray:Array = [
-			new Point(0, 20)
+			new Point(1.2, 27.5), new Point(0.8, 29), new Point(1.1, 29.4)
 		];
 
 		private var directionArray:Array = [

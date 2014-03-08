@@ -22,21 +22,11 @@ package com.cyberpunk.States.Platforms
 	{
 		private var player:MovieClip;
 		private var platforms:Array;
-		private var platformPlaced:Array;
 		private var savedCheckedPlatform:Array;
-		private var platformShape:MovieClip;
 		private var bricks:Array;
 		private var platform:MovieClip;
-		// private var savedPlatform:*;
-		private var hasPlatformGenerated:Boolean = false;
-		private var addPlatRect:Rectangle;
-		private var removePlatRect:Rectangle;
-		private var platformRect:Array = [];
-		private var savedPlatform:Array = [];
 		private var randomPlatform:int;
 		private var savedPlayerPos:Point;
-		private var clipShape:MovieClip;
-		private var currentPlatformMc:MovieClip;
 		
 		public function PlatformContainer(player:MovieClip) 
 		{
@@ -49,8 +39,7 @@ package com.cyberpunk.States.Platforms
 						  'com.cyberpunk.States.Platforms.Platform3'
 			];
 
-			randomPlatform       = Utils.getRandomInt(10, 20);
-			platformPlaced       = new Array();
+			randomPlatform       = Utils.getRandomInt(Config.MIN_PLATFORMS, Config.MAX_PLATFORMS);
 			savedCheckedPlatform = new Array();
 
 			var addingPlatformRect:Rectangle = new Rectangle(
@@ -62,7 +51,7 @@ package com.cyberpunk.States.Platforms
 
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
-				currentPlatformMc = generatePlatforms(addingPlatformRect);
+				var currentPlatformMc:MovieClip = generatePlatforms(addingPlatformRect);
 				checkPlatforms(currentPlatformMc);
 			}
 		}
@@ -161,12 +150,18 @@ package com.cyberpunk.States.Platforms
 		
 		private function checkPlatforms(currentPlatform:MovieClip):void 
 		{
-			var rect:Rectangle = currentPlatform.getRect(currentPlatform.parent);
+			var rect:Rectangle       = currentPlatform.getRect(currentPlatform.parent);
+			var playerRect:Rectangle = player.getRect(player.parent);
+
 			rect.inflate(40, 40);
+			playerRect.inflate(40, 40);
 
 			for(var z:int = 0; z < savedCheckedPlatform.length; z++)
 			{
 				var rect2:Rectangle = savedCheckedPlatform[z].getRect(savedCheckedPlatform[z].parent);
+				// Check platform collision on player
+				if (playerRect.intersects(rect2)) return;
+				// Check platform to platform collision
 				if (rect.intersects(rect2)) return;
 			};
 
@@ -176,14 +171,14 @@ package com.cyberpunk.States.Platforms
 		
 		private function addPlatforms():void 
 		{
-			addPlatRect = new Rectangle(
+			var addPlatRect:Rectangle = new Rectangle(
 				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
 				(player.y + (player.height * 2)) + Config.STAGE_HEIGHT,
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT
 			);
 
-			randomPlatform = Utils.getRandomInt(5, 8);
+			randomPlatform = Utils.getRandomInt(Config.MIN_PLATFORMS, Config.MAX_PLATFORMS);
 
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
@@ -194,13 +189,13 @@ package com.cyberpunk.States.Platforms
 
 		private function removePlatforms():void 
 		{
-			removePlatRect = new Rectangle(
+			var removePlatRect:Rectangle = new Rectangle(
 				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
 				player.y - (Config.STAGE_HEIGHT * 2),
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT
 			);
-
+			
 			for (var i:int = 0; i < savedCheckedPlatform.length; i++) {
 				if (removePlatRect.contains(savedCheckedPlatform[i].x, savedCheckedPlatform[i].y)) {
 					if (savedCheckedPlatform[i]) removeChild(savedCheckedPlatform[i]);

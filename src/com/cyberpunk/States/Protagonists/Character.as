@@ -25,13 +25,14 @@ package com.cyberpunk.States.Protagonists
 		private var key:Dictionary;
 		private var bumping:Dictionary;
 		private var jump:Boolean = false;
+		private var isPlayerVisible:Boolean = false;
 		private var savedPlayerPos:Point;
 		private var gravity:Number = 1;
 
 		private var leftTween:TweenLite;
 		private var rightTween:TweenLite;
 
-		private var jumpAmount:Number = 5;
+		private var jumpAmount:Number = 8;
 		private var jumping:Boolean   = false;
 
 		private var particleHolder:ParticleHolder;
@@ -62,19 +63,19 @@ package com.cyberpunk.States.Protagonists
 
 		public function calculateSpeed():void 
 		{
-			if (speed.y < 10) {
+			if (speed.y < Config.Y_SPEED) {
 				speed.y += gravity;
 			}
 
 			if (bumping != null && bumping['down']) {
-				jumpAmount = 5;
+				jumpAmount = 8;
 				speed.y = 0;
 				jump = false;
 			}
 
 			if (key['up'] && bumping['down'] && !jump) mainJump();
 			if (jumping) speed.y -= jumpAmount;
-			if (jump) jumpAmount = Math.max(0, jumpAmount - 0.5);
+			if (jump) jumpAmount = Math.max(0, jumpAmount - 2);
 
 			speed.x = 0;
 
@@ -85,6 +86,11 @@ package com.cyberpunk.States.Protagonists
 
 		public function update():void
 		{
+			if (!isPlayerVisible) {
+				clip.alpha = 1;
+				isPlayerVisible = true;
+			}
+
 			clip.x += speed.x;
 			clip.y += speed.y;
 		}
@@ -127,4 +133,3 @@ package com.cyberpunk.States.Protagonists
 		}
 	}
 }
- // 
