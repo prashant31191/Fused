@@ -156,11 +156,12 @@ package com.cyberpunk.States.Platforms
 			rect.inflate(40, 40);
 			playerRect.inflate(40, 40);
 
+			// Check platform collision on player
+			if (rect.intersects(playerRect)) return;
+				
 			for(var z:int = 0; z < savedCheckedPlatform.length; z++)
 			{
 				var rect2:Rectangle = savedCheckedPlatform[z].getRect(savedCheckedPlatform[z].parent);
-				// Check platform collision on player
-				if (playerRect.intersects(rect2)) return;
 				// Check platform to platform collision
 				if (rect.intersects(rect2)) return;
 			};

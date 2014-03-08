@@ -107,6 +107,11 @@ package com.cyberpunk.States
 				for( var z:int = 0; z < directionArray.length; z++ )
 				{
 					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
+
+					for(var m:int = 0; m < platforms[i].numChildren; m++)
+					{
+						checkBrickCollision(directionArray[z].array, platforms[i].getChildAt(m), player);
+					};
 				};
 			}
 		}
@@ -116,7 +121,7 @@ package com.cyberpunk.States
 			var playerMc:MovieClip = player.playerClip;
 			var playerSpeed:Point  = player.currentPlayerSpeed;
 
-			for( var m:int = 0; m < currentArray.length; m++ )
+			for(var m:int = 0; m < currentArray.length; m++)
 			{
 				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
 				playerPos = playerMc.parent.localToGlobal(playerPos);
@@ -139,6 +144,22 @@ package com.cyberpunk.States
 					bumping[currentDirection] = true;
 					break;
 				} 
+			};
+		}
+
+		private function checkBrickCollision(currentArray:Array, currentBrick:MovieClip, player:Character):void 
+		{
+			var playerMc:MovieClip = player.playerClip;
+			var playerSpeed:Point  = player.currentPlayerSpeed;
+
+			for(var m:int = 0; m < currentArray.length; m++)
+			{
+				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
+				playerPos = playerMc.parent.localToGlobal(playerPos);
+
+				if (currentBrick.hitTestPoint(playerPos.x, playerPos.y, true)) {
+					currentBrick.parent.removeChild(currentBrick);
+				}
 			};
 		}
 	}
