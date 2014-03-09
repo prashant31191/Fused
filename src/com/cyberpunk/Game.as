@@ -5,6 +5,7 @@ package com.cyberpunk
 	import com.cyberpunk.States.Protagonists.Character;
 	import com.cyberpunk.States.Background.InfiniteScrolling;
 	import com.cyberpunk.Setup.Config;
+	import com.cyberpunk.States.Protagonists.EnemiesContainer;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -27,6 +28,7 @@ package com.cyberpunk
 		private var background:InfiniteScrolling;
 		private var platformContainer:PlatformContainer;
 		private var collisionManager:CollisionManager;
+		private var enemiesContainer:EnemiesContainer;
 		
 		public function Game(main:Main) 
 		{
@@ -36,10 +38,13 @@ package com.cyberpunk
 			character = new Character(assets.mCharacter, _stage);
 			character.playerSpeed = new Point(0, Config.Y_SPEED);
 
+			enemiesContainer = new EnemiesContainer(assets.mEnemies, character.playerClip);
+
 			background        = new InfiniteScrolling();
 			platformContainer = new PlatformContainer(character.playerClip);
 			collisionManager  = new CollisionManager();
 
+			collisionManager.platformsName = platformContainer.platformsName;
 			collisionManager.playerSpeed = character.currentPlayerSpeed;
 
 			_stage.addChild(background);
@@ -70,8 +75,9 @@ package com.cyberpunk
 			collisionManager.update(character);
 			character.update();
 
-			background.move(-character.currentPlayerSpeed.x, -character.currentPlayerSpeed.y);
+			background.move(-character.currentPlayerSpeed.x / 4, -character.currentPlayerSpeed.y / 4);
 			platformContainer.update();
+			enemiesContainer.update();
 
 			character.bumpingKeys = collisionManager.bumpingKeys;
 		}

@@ -9,6 +9,12 @@ package com.cyberpunk.States
 	import flash.utils.Dictionary;
 	import flash.geom.Rectangle;
 	import com.cyberpunk.States.Protagonists.Character;
+	import flash.utils.getQualifiedClassName;
+	import com.cyberpunk.States.Particles.ParticleHolder;
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Bounce;
+	import com.greensock.easing.Elastic;
+	import flash.utils.getTimer;
 
 	/**
 	 * ...
@@ -19,50 +25,30 @@ package com.cyberpunk.States
 		private var platforms:Array;
 		private var bumping:Dictionary;
 		private var test:MovieClip;
+		private var brickRemoval:Array;
+		private var platformName:Array;
+		private var brickTween:TweenLite;
+		private var saveCurrentBrick:MovieClip;
+		private var startTime:int;
 		
-		// private var leftBumpPointArray:Array = [
-		// 	new Point(-48, 22)
-		// ];
-
 		private var leftBumpPointArray:Array = [
-			new Point(-7.5, -13.9), new Point(-9.1, -12.6), new Point(-13.5, -10.5), new Point(-16, -6.5),  new Point(-18.9, -3.2),
-			new Point(-18, -1.1),   new Point(-17.4, 0.8),  new Point(-17.6, -4.6),  new Point(16.4, -6.1), new Point(-15.5, -8.1),
-			new Point(-13.9, -0.4), new Point(-15.6, -4.1), new Point(-6.2, -1.1),   new Point(-8.2, 0.9),  new Point(-9.5, 2),
-			new Point(-10.8, 4.2),  new Point(-12, 6.1),    new Point(-12.9, 6.9),   new Point(-10.2, 8.6), new Point(-8.4, 10.4),
-			new Point(-6.4, 12.1),  new Point(-4.6, 14),    new Point(-4, 16.9),     new Point(-3, 18.9),   new Point(-2.5, 19.8),
-			new Point(0.6, 22.9),   new Point(1.1, 24.9),   new Point(1.1, 26.1),
-			new Point(0.2, -24.4),  new Point(-1, -24),    new Point(1.5, -24),    new Point(3.9, -22.8),  new Point(-2.2, -23.1),
-			new Point(-2.9, -20.6), new Point(-2, -18.4),  new Point(-1.4, -16.9), new Point(-1.1, -14.5), new Point(1.9, -14.9),
-			new Point(1.4, -16.9),  new Point(2.8, -17.5), new Point(4.1, -15.9),  new Point(-5.6, -15)
+			new Point(-18, -3),
+			new Point(-12.6, 7.4),
+			new Point(-6, -16)
 		];
-
-		// private var rightBumpPointArray:Array = [
-		// 	new Point(48, 12)
-		// ];
 
 		private var rightBumpPointArray:Array = [
-			new Point(20, 0)
+			new Point(14.5, -10),
+			new Point(19.2, -2.1),
+			new Point(8.8, 11.5)
 		];
-
-		// private var upBumpPointArray:Array = [
-		// 	new Point(-48, -25), new Point(-27, -18), new Point(-14, -14),
-		// 	new Point(4, -8),    new Point(18, -2),   new Point(27, 2),
-		// 	new Point(35, 5),    new Point(45, 10)
-		// ];
 
 		private var upBumpPointArray:Array = [
-			new Point(0.2, -24.4)
+			new Point(-2.9, -23.4)
 		];
 
-		// private var downBumpPointArray:Array = [
-		// 	new Point(-28, 17), new Point(-20, 19), new Point(-8, 20),
-		// 	new Point(-2, 21),  new Point(4, 19),   new Point(14, 20),
-		// 	new Point(20, 21),  new Point(27, 19),  new Point(35, 20),
-		// 	new Point(44, 20)
-		// ];
-
 		private var downBumpPointArray:Array = [
-			new Point(1.2, 27.5), new Point(0.8, 29), new Point(1.1, 29.4)
+			new Point(1.6, 29.1)
 		];
 
 		private var directionArray:Array = [
@@ -94,6 +80,11 @@ package com.cyberpunk.States
 		{
 			return this.bumping;
 		}
+
+		public function set platformsName(platformName:Array):void 
+		{
+			this.platformName = platformName;
+		}
 		
 		public function update(player:Character):void
 		{
@@ -108,15 +99,15 @@ package com.cyberpunk.States
 				{
 					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
 
-					for(var m:int = 0; m < platforms[i].numChildren; m++)
+					for(var m:int = 0; m < platforms[i].clip.numChildren; m++)
 					{
-						checkBrickCollision(directionArray[z].array, platforms[i].getChildAt(m), player);
+						checkBrickCollision(directionArray[z].array, platforms[i].clip.getChildAt(m), player);
 					};
 				};
 			}
 		}
 
-		private function checkCollision(currentArray:Array, currentDirection:String, player:Character, currentPlatform:MovieClip):void 
+		private function checkCollision(currentArray:Array, currentDirection:String, player:Character, currentPlatform:Object):void 
 		{
 			var playerMc:MovieClip = player.playerClip;
 			var playerSpeed:Point  = player.currentPlayerSpeed;
@@ -125,23 +116,30 @@ package com.cyberpunk.States
 			{
 				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
 				playerPos = playerMc.parent.localToGlobal(playerPos);
-				if (currentPlatform.hitTestPoint(playerPos.x, playerPos.y, true)) {
+				if (currentPlatform.clip.hitTestPoint(playerPos.x, playerPos.y, true)) {
+
+					var platformRegex:RegExp = /(.*?)::/;
+					var platformClassName:String = getQualifiedClassName(currentPlatform.platform);
+					var currentPlatformName:String = platformClassName.replace(platformRegex, "");
+
 					switch(currentDirection)
 					{
 						case 'left':
-							playerSpeed.x = 0;
+							// playerSpeed.x = -1;
 							break;
 						case 'right':
-							playerSpeed.x = 0;
+							// playerSpeed.x = 1;
 							break;
 						case 'up':
-							playerSpeed.y = 0;
+							// playerSpeed.y = -2;
 							break;
 						case 'down':
-							playerSpeed.y = 0;
+							// playerSpeed.y = 0;
 							break;
 					}
+
 					bumping[currentDirection] = true;
+					if (!bumping['down']) playerSpeed.y = currentPlatform.platform.velocity;
 					break;
 				} 
 			};
@@ -152,13 +150,27 @@ package com.cyberpunk.States
 			var playerMc:MovieClip = player.playerClip;
 			var playerSpeed:Point  = player.currentPlayerSpeed;
 
+			brickRemoval = new Array();
+
 			for(var m:int = 0; m < currentArray.length; m++)
 			{
-				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
+				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + (currentArray[m].x + 10), (playerMc.y + playerSpeed.y) + (currentArray[m].y + 10));
 				playerPos = playerMc.parent.localToGlobal(playerPos);
 
-				if (currentBrick.hitTestPoint(playerPos.x, playerPos.y, true)) {
-					currentBrick.parent.removeChild(currentBrick);
+				if (currentBrick.hitTestObject(playerMc)) {
+					startTime = getTimer();
+				// if (currentBrick.hitTestPoint(playerPos.x, playerPos.y, true)) {
+					// After 1 second
+					if (currentBrick != saveCurrentBrick) {
+					}
+					// currentBrick.parent.removeChild(currentBrick);
+					// if (currentBrick != saveCurrentBrick) {
+					// 	brickTween = new TweenLite(currentBrick, 0.2, {alpha: 0, visible:false, y: currentBrick.y - 1});
+					// }
+					saveCurrentBrick = currentBrick;
+
+					// ParticleHolder.
+					// brickRemoval.push({platformType: currentBrick.parent, clip: currentBrick});
 				}
 			};
 		}

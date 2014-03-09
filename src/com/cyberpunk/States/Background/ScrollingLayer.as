@@ -37,8 +37,15 @@ package com.cyberpunk.States.Background
 			drawCanvas();
 		}
  
-		public function move(dx:Number, dy:Number):void {
-			matrix.translate(dx, dy);
+		public function move(dx:Number, dy:Number):void
+		{
+			matrix.translate(dx * _parallaxAmount, dy * _parallaxAmount);
+
+			if(dx!=0)
+				matrix.tx %= scrollingBitmap.width;
+			if(dy!=0)
+				matrix.ty %= scrollingBitmap.height;
+
 			drawCanvas();
 		}
  

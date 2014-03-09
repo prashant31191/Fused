@@ -9,7 +9,7 @@ package com.cyberpunk.States.Platforms
 	public class Platform3 extends PlatformBase 
 	{
 		protected static const MAX_BRICK:Number  = 2;
-		protected static const VELOCITY:Number   = Config.Y_SPEED;
+		protected static const VELOCITY:Number   = 0;
 		protected static const X_AXIS:String  	 = 'X_AXIS';
 
 		protected var platforms:Array = [ 'Platform3Type1' ];

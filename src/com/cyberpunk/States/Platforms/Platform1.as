@@ -8,7 +8,7 @@ package com.cyberpunk.States.Platforms
 	public class Platform1 extends PlatformBase 
 	{
 		protected static const MAX_BRICK:Number  = 5;
-		protected static const VELOCITY:Number   = Config.Y_SPEED;
+		protected static const VELOCITY:Number   = 0;
 		protected static const X_AXIS:String  	 = 'X_AXIS';
 
 		protected var platforms:Array = [   'Platform1Type1', 

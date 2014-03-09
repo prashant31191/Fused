@@ -19,14 +19,17 @@ package com.cyberpunk.Setup
 		public static const D_LETTER:Number = 68;
 		
 		public static const STAGE_WIDTH:Number  = 640;
-		public static const STAGE_HEIGHT:Number = 360;
+		public static const STAGE_HEIGHT:Number = 480;
 
 		public static const Y_SPEED:Number = 15;
-		public static const X_SPEED:Number = 10;
+		public static const X_SPEED:Number = 20;
 
 		/*Platforms to be added, below the player 
 		every time he goes further down*/
-		public static const MIN_PLATFORMS:Number = 20;
-		public static const MAX_PLATFORMS:Number = 25;
+		public static const MIN_PLATFORMS:Number = 10;
+		public static const MAX_PLATFORMS:Number = 15;
+
+		public static const MIN_ENEMY:Number = 1;
+		public static const MAX_ENEMY:Number = 5;
 	}
 }

@@ -7,7 +7,7 @@ package com.cyberpunk.States.Protagonists
 	import fl.transitions.Tween;
 	import fl.motion.easing.Elastic;
 
-    public class ProtagonistsBase extends Sprite
+    public class ProtagonistsBase extends MovieClip
     {
     	protected var clip:MovieClip;
     	protected var speed:Point;

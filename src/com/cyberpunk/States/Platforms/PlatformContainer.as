@@ -13,6 +13,7 @@ package com.cyberpunk.States.Platforms
 	import flash.external.ExternalInterface;
 	import flash.display.BitmapData;
 	import flash.display.Bitmap;
+	import flash.utils.getQualifiedSuperclassName;
 
 	/**
 	 * ...
@@ -34,9 +35,9 @@ package com.cyberpunk.States.Platforms
 
 			savedPlayerPos = new Point(player.x, player.y);
 
-			platforms = [ 'com.cyberpunk.States.Platforms.Platform1', 
-						  'com.cyberpunk.States.Platforms.Platform2', 
-						  'com.cyberpunk.States.Platforms.Platform3'
+			platforms = [ {packageName: 'com.cyberpunk.States.Platforms.Platform1', type: 'Platform1'}, 
+					      {packageName: 'com.cyberpunk.States.Platforms.Platform2', type: 'Platform2'}, 
+			 			  {packageName: 'com.cyberpunk.States.Platforms.Platform3', type: 'Platform3'}
 			];
 
 			randomPlatform       = Utils.getRandomInt(Config.MIN_PLATFORMS, Config.MAX_PLATFORMS);
@@ -59,6 +60,11 @@ package com.cyberpunk.States.Platforms
 		public function get platformArray():Array 
 		{
 			return savedCheckedPlatform;
+		}
+
+		public function get platformsName():Array 
+		{
+			return platforms;
 		}
 
 		public function update():void
@@ -92,7 +98,8 @@ package com.cyberpunk.States.Platforms
 
 			// Choose a random platform container
 			var currentIndexPos:int  = int(Math.random() * platforms.length);
-			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos]) as Class;
+			var ClassReference:Class = getDefinitionByName(platforms[currentIndexPos].packageName) as Class;
+
 			// Store the current platform container
 			platform = new ClassReference();
 
@@ -136,20 +143,19 @@ package com.cyberpunk.States.Platforms
 						currentClip.y = savedBrickPlatform.y + currentClip.height;
 					}
 				}
-
 				// Save previous brick position
 				savedBrickPlatform = currentClip;
 				// Add a brick to the stage
 				newPlatform.addChild(currentClip);
 				// Keep a track of every bricks for the current platform
-				bricks.push(currentClip);
+				bricks.push(currentClip);		
 			};
 
 			return newPlatform;
 		}
 		
 		private function checkPlatforms(currentPlatform:MovieClip):void 
-		{
+		{			
 			var rect:Rectangle       = currentPlatform.getRect(currentPlatform.parent);
 			var playerRect:Rectangle = player.getRect(player.parent);
 
@@ -158,16 +164,16 @@ package com.cyberpunk.States.Platforms
 
 			// Check platform collision on player
 			if (rect.intersects(playerRect)) return;
-				
+
 			for(var z:int = 0; z < savedCheckedPlatform.length; z++)
 			{
-				var rect2:Rectangle = savedCheckedPlatform[z].getRect(savedCheckedPlatform[z].parent);
+				var rect2:Rectangle = savedCheckedPlatform[z].clip.getRect(savedCheckedPlatform[z].clip.parent);
 				// Check platform to platform collision
 				if (rect.intersects(rect2)) return;
 			};
 
 			addChild(currentPlatform);
-			savedCheckedPlatform.push(currentPlatform);
+			savedCheckedPlatform.push({clip: currentPlatform, platform: platform});
 		}
 		
 		private function addPlatforms():void 
@@ -178,8 +184,6 @@ package com.cyberpunk.States.Platforms
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT
 			);
-
-			randomPlatform = Utils.getRandomInt(Config.MIN_PLATFORMS, Config.MAX_PLATFORMS);
 
 			for (var i:int = 0; i < randomPlatform; i++) 
 			{
@@ -198,10 +202,12 @@ package com.cyberpunk.States.Platforms
 			);
 			
 			for (var i:int = 0; i < savedCheckedPlatform.length; i++) {
-				if (removePlatRect.contains(savedCheckedPlatform[i].x, savedCheckedPlatform[i].y)) {
-					if (savedCheckedPlatform[i]) removeChild(savedCheckedPlatform[i]);
+				if (removePlatRect.contains(savedCheckedPlatform[i].clip.x, savedCheckedPlatform[i].clip.y)) {
+					if (savedCheckedPlatform[i].clip) removeChild(savedCheckedPlatform[i].clip);
 				}
 			}
+
+			savedCheckedPlatform = new Array();
 		}
 	}
 }

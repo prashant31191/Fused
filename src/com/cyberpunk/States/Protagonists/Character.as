@@ -49,6 +49,8 @@ package com.cyberpunk.States.Protagonists
 			particleHolder    = new ParticleHolder(clip);
 			particle 		  = particleHolder._clip;
 
+			clip.gotoAndStop(1);
+
 			clip.x = (Config.STAGE_WIDTH / 2) - (clip.width / 2);
 			clip.y = (Config.STAGE_HEIGHT / 2) - (clip.height / 2);
 
@@ -69,19 +71,28 @@ package com.cyberpunk.States.Protagonists
 
 			if (bumping != null && bumping['down']) {
 				jumpAmount = 8;
-				speed.y = 0;
+				clip.gotoAndStop(1);
+				// speed.y = 0;
 				jump = false;
 			}
-
+			
 			if (key['up'] && bumping['down'] && !jump) mainJump();
 			if (jumping) speed.y -= jumpAmount;
 			if (jump) jumpAmount = Math.max(0, jumpAmount - 2);
 
 			speed.x = 0;
 
-			if (key['left'])  speed.x = -Config.X_SPEED;
-			else if (key['right']) speed.x = Config.X_SPEED;
-
+			if (key['left']) {
+				if (bumping['down']) speed.x = -Config.X_SPEED * 1.5;
+				else speed.x = -Config.X_SPEED;
+				leftTween = new TweenLite(clip, 0.3, {rotation: -40, ease:Elastic});
+			}
+			else if (key['right']) {
+				if (bumping['down']) speed.x = Config.X_SPEED * 1.5;
+				else speed.x = Config.X_SPEED;
+				rightTween = new TweenLite(clip, 0.3, {rotation: 40, ease:Elastic});
+			}
+			else var originTwee:TweenLite = new TweenLite(clip, 0.3, {rotation: 0, ease:Elastic});
 		}
 
 		public function update():void
@@ -97,6 +108,7 @@ package com.cyberpunk.States.Protagonists
 
 		private function mainJump():void 
 		{
+			clip.gotoAndStop(2);
 			jumping = true;
 			jump = true;
 		}
@@ -122,6 +134,7 @@ package com.cyberpunk.States.Protagonists
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER) {
 				key['up']  = false;
 				jumping    = false;
+				clip.gotoAndStop(1);
 				jumpAmount = BASED_JUMP;
 			}
 			else if (keyCode == Config.DOWN_ARROW || keyCode == Config.S_LETTER)
