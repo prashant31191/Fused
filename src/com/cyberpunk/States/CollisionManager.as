@@ -97,53 +97,36 @@ package com.cyberpunk.States
 			{
 				for( var z:int = 0; z < directionArray.length; z++ )
 				{
-					checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i]);
 
 					for(var m:int = 0; m < platforms[i].clip.numChildren; m++)
 					{
-						checkBrickCollision(directionArray[z].array, platforms[i].clip.getChildAt(m), player);
+						checkCollision(directionArray[z].array, directionArray[z].direction, player, platforms[i], platforms[i].clip.getChildAt(m));
+						// checkBrickCollision(directionArray[z].array, platforms[i].clip.getChildAt(m), player);
 					};
 				};
 			}
 		}
 
-		private function checkCollision(currentArray:Array, currentDirection:String, player:Character, currentPlatform:Object):void 
+		private function checkCollision(currentArray:Array, currentDirection:String, player:Character, currentPlatform:Object, brick:MovieClip):void 
 		{
 			var playerMc:MovieClip = player.playerClip;
 			var playerSpeed:Point  = player.currentPlayerSpeed;
 
-			for(var m:int = 0; m < currentArray.length; m++)
-			{
-				var playerPos:Point = new Point((playerMc.x + playerSpeed.x) + currentArray[m].x, (playerMc.y + playerSpeed.y) + currentArray[m].y);
-				playerPos = playerMc.parent.localToGlobal(playerPos);
-				if (currentPlatform.clip.hitTestPoint(playerPos.x, playerPos.y, true)) {
-
-					var platformRegex:RegExp = /(.*?)::/;
-					var platformClassName:String = getQualifiedClassName(currentPlatform.platform);
-					var currentPlatformName:String = platformClassName.replace(platformRegex, "");
-
-					switch(currentDirection)
-					{
-						case 'left':
-							// playerSpeed.x = -1;
-							break;
-						case 'right':
-							// playerSpeed.x = 1;
-							break;
-						case 'up':
-							// playerSpeed.y = -2;
-							break;
-						case 'down':
-							// playerSpeed.y = 0;
-							break;
-					}
-
-					bumping[currentDirection] = true;
-					if (!bumping['down']) playerSpeed.y = currentPlatform.platform.velocity;
-					break;
-				} 
-			};
+			if (brick.hitTestObject(playerMc)) {
+				// ExternalInterface.call('console.log', (playerMc.y - playerSpeed.y));
+				if ((brick.y - (playerMc.y - playerSpeed.y)) > -20) {
+					bumping['down'] = true;
+					currentPlatform.platform.breakPlatform(brick);
+				}
+				var platformRegex:RegExp = /(.*?)::/;
+				var platformClassName:String = getQualifiedClassName(currentPlatform.platform);
+				var currentPlatformName:String = platformClassName.replace(platformRegex, "");
+				if (currentPlatformName == 'Platform2') {
+					bumping['up'] = true;
+				}
+			}
 		}
+
 
 		private function checkBrickCollision(currentArray:Array, currentBrick:MovieClip, player:Character):void 
 		{

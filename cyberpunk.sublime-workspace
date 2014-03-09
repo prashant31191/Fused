@@ -4,16 +4,140 @@
 		"selected_items":
 		[
 			[
-				"P",
-				"ParticleHolder"
+				"tim",
+				"timeLeft"
+			],
+			[
+				"pla",
+				"platform"
+			],
+			[
+				"ju",
+				"jumping"
+			],
+			[
+				"jum",
+				"jump"
+			],
+			[
+				"player",
+				"playerSpeed"
+			],
+			[
+				"cur",
+				"currentPlatformName"
 			],
 			[
 				"cu",
-				"currentPlatform"
+				"currentPlatformName"
 			],
 			[
 				"pl",
+				"playerMc"
+			],
+			[
+				"cl",
+				"clip"
+			],
+			[
+				"cure",
+				"currentPlatform"
+			],
+			[
+				"sp",
+				"playerSpeed"
+			],
+			[
+				"En",
+				"EnemyType1"
+			],
+			[
+				"Ene",
+				"Enemy1"
+			],
+			[
+				"platf",
 				"platform"
+			],
+			[
+				"pa",
+				"packageName"
+			],
+			[
+				"P",
+				"Platform1"
+			],
+			[
+				"new",
+				"newPlatform"
+			],
+			[
+				"t",
+				"true"
+			],
+			[
+				"di",
+				"diffX"
+			],
+			[
+				"play",
+				"playerPos"
+			],
+			[
+				"playe",
+				"playerSpeed"
+			],
+			[
+				"add",
+				"addChild"
+			],
+			[
+				"fo",
+				"for	for (…) {…}"
+			],
+			[
+				"l",
+				"l"
+			],
+			[
+				"save",
+				"savedCheckedPlatform"
+			],
+			[
+				"remo",
+				"removeChild"
+			],
+			[
+				"bric",
+				"bricks"
+			],
+			[
+				"Pl",
+				"Platform2Type1"
+			],
+			[
+				"ran",
+				"randomIndex"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"bmp",
+				"bmpX"
+			],
+			[
+				"bit",
+				"import flash.display.Bitmap;"
+			],
+			[
+				"ad",
+				"addChild"
+			],
+			[
+				"x",
+				"x"
 			],
 			[
 				"br",
@@ -28,14 +152,6 @@
 				"rect"
 			],
 			[
-				"save",
-				"savedBrickPlatform"
-			],
-			[
-				"bric",
-				"brickAmount"
-			],
-			[
 				"get",
 				"getRandomInt"
 			],
@@ -46,14 +162,6 @@
 			[
 				"bri",
 				"brickAmount"
-			],
-			[
-				"ju",
-				"jumpAmount"
-			],
-			[
-				"pla",
-				"playerPos1"
 			],
 			[
 				"le",
@@ -76,16 +184,8 @@
 				"import fl.transitions.Tween;"
 			],
 			[
-				"cl",
-				"clip"
-			],
-			[
 				"ex",
 				"ExternalInterface"
-			],
-			[
-				"x",
-				"x"
 			],
 			[
 				"ve",
@@ -104,20 +204,12 @@
 				"platform"
 			],
 			[
-				"Pl",
-				"Platform1"
-			],
-			[
 				"s",
 				"speed"
 			],
 			[
 				"a",
 				"array"
-			],
-			[
-				"play",
-				"playerPos"
 			],
 			[
 				"S",
@@ -132,10 +224,6 @@
 				"import flash.utils.Dictionary;"
 			],
 			[
-				"remo",
-				"removePlatRect"
-			],
-			[
 				"SA",
 				"STAGE_HEIGHT"
 			],
@@ -144,20 +232,12 @@
 				"savedPlayerPos"
 			],
 			[
-				"ran",
-				"randomPlatform"
-			],
-			[
 				"Ex",
 				"import flash.external.ExternalInterface;"
 			],
 			[
 				"g",
 				"generatePlatforms"
-			],
-			[
-				"ad",
-				"addingPlatformRect"
 			],
 			[
 				"ST",
@@ -170,10 +250,6 @@
 			[
 				"In",
 				"InfiniteBackground"
-			],
-			[
-				"di",
-				"direction"
 			],
 			[
 				"E",
@@ -210,10 +286,6 @@
 			[
 				"tex",
 				"text-decoration"
-			],
-			[
-				"fo",
-				"font-weight"
 			],
 			[
 				"wi",
@@ -268,10 +340,6 @@
 				"mapLevel"
 			],
 			[
-				"cur",
-				"currentLayer"
-			],
-			[
 				"la",
 				"layerName"
 			],
@@ -324,10 +392,6 @@
 				"currentTime"
 			],
 			[
-				"cure",
-				"currentFrame"
-			],
-			[
 				"sa",
 				"savedAnimCounter"
 			],
@@ -352,14 +416,6 @@
 				"scaleY"
 			],
 			[
-				"sp",
-				"sprite"
-			],
-			[
-				"player",
-				"playerAnim"
-			],
-			[
 				"ac",
 				"action"
 			],
@@ -370,10 +426,6 @@
 			[
 				"name",
 				"nameArray"
-			],
-			[
-				"playe",
-				"playerSprite"
 			],
 			[
 				"atl",
@@ -462,92 +514,48 @@
 			[
 				"to",
 				"totalDropItem"
-			],
-			[
-				"total",
-				"totalDropItem"
-			],
-			[
-				"acc",
-				"accurateDropChance"
-			],
-			[
-				"powe",
-				"powerUpsName"
-			],
-			[
-				"extr",
-				"extrabomb"
-			],
-			[
-				"sta",
-				"static_bloc_layer"
-			],
-			[
-				"sat",
-				"static_bloc_layer"
-			],
-			[
-				"gre",
-				"greenTileTest"
-			],
-			[
-				"gr",
-				"greenTileTest"
-			],
-			[
-				"l",
-				"length"
-			],
-			[
-				"so",
-				"sorted_arr"
-			],
-			[
-				"rna",
-				"randomIndexesArray"
-			],
-			[
-				"tot",
-				"totalGreenTiles"
-			],
-			[
-				"for",
-				"for	for (…) {…}"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
+			"settings":
+			{
+				"buffer_size": 6441,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/com/cyberpunk/States/CollisionManager.as",
+			"settings":
+			{
+				"buffer_size": 4669,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "src/com/cyberpunk/States/Platforms/Platform1.as",
 			"settings":
 			{
-				"buffer_size": 584,
+				"buffer_size": 1495,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/com/cyberpunk/States/Particles/Particle.as",
+			"file": "src/com/cyberpunk/States/Platforms/PlatformBase.as",
 			"settings":
 			{
-				"buffer_size": 1143,
+				"buffer_size": 1192,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/com/cyberpunk/States/Particles/ParticleHolder.as",
+			"file": "src/com/cyberpunk/States/Platforms/IPlatform.as",
 			"settings":
 			{
-				"buffer_size": 1580,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/com/cyberpunk/States/Protagonists/Character.as",
-			"settings":
-			{
-				"buffer_size": 3914,
+				"buffer_size": 423,
 				"line_ending": "Unix"
 			}
 		}
@@ -616,44 +624,79 @@
 	},
 	"file_history":
 	[
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/EnemiesContainer.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform3.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform2.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Helpers/CustomTimer.as",
+		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/interactions/interaction_1/src/com/oliv/domino/interaction/Main.as",
+		"/Users/caubry/Downloads/roofTops 7/Part.as",
+		"/Users/caubry/Downloads/roofTops 7/Plat.as",
+		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/lib/common_src/com/oliv/domino/InteractionTimer.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Character.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformBase.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/IPlatform.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform1.as",
+		"/Users/caubry/Downloads/roofTops 7/Main.as",
+		"/Users/caubry/Downloads/roofTops 7/Player.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Setup/Config.as",
+		"/Users/caubry/Downloads/roofTops 3/Lazer.as",
+		"/Users/caubry/Downloads/roofTops 3/Tur.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Game.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Enemy1.as",
+		"/Users/caubry/Downloads/roofTops 7/BlockPart.as",
+		"/Users/caubry/Downloads/roofTops 6/Plat.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
+		"/Users/caubry/d/workspace/cyberpunk/build-config.xml",
+		"/Users/caubry/d/workspace/cyberpunk/index.html",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/CollisionManager.as",
+		"/Users/caubry/Downloads/roofTops 3/triangle.as",
+		"/Users/caubry/Downloads/roofTops 3/vision.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Enemy2.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Enemy3.as",
+		"/Users/caubry/Downloads/roofTops 3/Main.as",
+		"/Users/caubry/Downloads/roofTops 3/Plat.as",
+		"/Users/caubry/Downloads/roofTops 3/Player.as",
+		"/Users/caubry/Downloads/roofTops 2/Main.as",
+		"/Users/caubry/Downloads/roofTops 2/Player.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformContainer.as",
+		"/Users/caubry/Downloads/roofTops 2/platUp.as",
+		"/Users/caubry/Downloads/roofTops 2/Plat.as",
+		"/Users/caubry/Downloads/roofTops 2/Part.as",
+		"/Users/caubry/Downloads/roofTops 2/Lazer.as",
+		"/Users/caubry/Downloads/roofTops 2/Elec.as",
+		"/Users/caubry/Downloads/roofTops 2/BlockPart.as",
+		"/Users/caubry/Downloads/roofTops 2/blockPart2.as",
+		"/Users/caubry/Downloads/roofTops 2/Ship.as",
+		"/Users/caubry/Downloads/roofTops 2/Smoke.as",
+		"/Users/caubry/Downloads/roofTops 2/Tur.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/InfiniteScrolling.as",
 		"/Users/caubry/Downloads/roofTops/Player.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/ScrollingLayer.as",
+		"/Users/caubry/d/workspace/cyberpunk/cyberpunk.sublime-project",
+		"/Users/caubry/d/workspace/caubry.github.io/_data/projects.yml",
+		"/Users/caubry/d/workspace/caubry.github.io/cyberpunk/index.html",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/ParticleHolder.as",
+		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/Particle.as",
 		"/Users/caubry/Downloads/roofTops/Part.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/ScreenScroller.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/CollisionManager.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Outro.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Interaction.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Swipe copy.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Swipe.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Character.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Game.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/Setup/Config.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformContainer.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/PlatformBase.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/IPlatform.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform1.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform2.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Platforms/Platform3.as",
-		"/Users/caubry/d/workspace/cyberpunk/cyberpunk.sublime-project",
-		"/Users/caubry/d/workspace/cyberpunk/build-config.xml",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/ProtagonistsBase.as",
 		"/Users/caubry/Downloads/roofTops/Plat.as",
 		"/Users/caubry/Downloads/roofTops/Main.as",
 		"/Users/caubry/Downloads/roofTops/Ship.as",
 		"/Users/caubry/Downloads/roofTops/Smoke.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/Particle.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Particles/ParticleHolder.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/ParticleHolder.as",
 		"/Users/caubry/d/studios/rb/harpic/whiteandshinebleach/au/shiny_things30_03764/interactive_as3/src/com/telemetry/ads/HarpicWhiteandshinebleach/States/Particle.as",
 		"/Users/caubry/d/workspace/cyberpunk/lib/greensock/src/com/greensock/TweenLite.as",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/interactions/interaction_4/build-config.xml",
 		"/Users/caubry/d/workspace/oliv_promo_video/football/build-config.xml",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/InfiniteScrolling.as",
 		"/Users/caubry/d/workspace/imageCompression/imageCompression.sh",
 		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/EnnemiesContainer.as",
 		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemy1.as",
 		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemy2.as",
 		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Protagonists/Ennemies3.as",
-		"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk/States/Background/ScrollingLayer.as",
 		"/Users/caubry/Downloads/ScrollingBackground/src/layers/Decal.as",
 		"/Users/caubry/Downloads/ScrollingBackground/src/layers/StarField.as",
 		"/Users/caubry/Downloads/ScrollingBackground/src/layers/ScrollingLayer.as",
@@ -671,7 +714,6 @@
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/test.html",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/build-config.xml",
 		"/Users/caubry/Library/Application Support/Sublime Text 2/Packages/ActionScript/AS3.sublime-build",
-		"/Users/caubry/d/workspace/cyberpunk/index.html",
 		"/Users/caubry/Library/Application Support/Sublime Text 2/Packages/ActionScript 3/package-metadata.json",
 		"/Users/caubry/Library/Application Support/Sublime Text 2/Packages/ActionScript 3/ActionScript 3.tmLanguage",
 		"/Users/caubry/d/workspace/oliv_promo_video/football/as3_test.sublime-project",
@@ -709,41 +751,7 @@
 		"/C/workspace/octopress/source/_includes/navigation.html",
 		"/C/workspace/octopress/source/_data/_projects.yml",
 		"/C/workspace/octopress/sass/screen.scss",
-		"/C/workspace/octopress/sass/base/_theme.scss",
-		"/C/workspace/octopress/source/_config.yml",
-		"/C/workspace/octopress/source/_layouts/default.html",
-		"/C/workspace/octopress/source/_projects/index.markdown",
-		"/C/workspace/octopress/public/index.html",
-		"/C/workspace/octopress/source/_posts/2012-10-03-flashdevelop-for-as3.markdown",
-		"/C/workspace/octopress/source/_posts/2014-02-14-javascript-animation-using-requestanimationframe-and-set-a-fps.markdown",
-		"/C/workspace/octopress/sass/partials/_navigation.scss",
-		"/C/workspace/octopress/sass/partials/_syntax.scss",
-		"/C/workspace/octopress/sass/custom/_layout.scss",
-		"/C/workspace/octopress/sass/base/_layout.scss",
-		"/C/workspace/octopress/sass/base/_utilities.scss",
-		"/C/workspace/octopress/source/_layouts/projects.html",
-		"/C/workspace/octopress/source/_includes/custom/asides/about.html",
-		"/C/workspace/octopress/source/_includes/custom/after_footer.html",
-		"/C/workspace/octopress/source/_includes/custom/head.html",
-		"/C/workspace/octopress/source/_includes/post/author.html",
-		"/C/workspace/octopress/source/_includes/footer.html",
-		"/C/workspace/octopress/source/_includes/custom/header.html",
-		"/C/workspace/octopress/source/_includes/article.html",
-		"/C/workspace/octopress/source/_includes/custom/navigation.html",
-		"/C/workspace/octopress/source/contact/index.markdown",
-		"/C/workspace/octopress/source/_includes/custom/footer.html",
-		"/C/workspace/octopress/source/_layouts/page.html",
-		"/C/workspace/octopress/source/stylesheets/screen.css",
-		"/C/workspace/octopress/.themes/minimized/sass/screen.scss",
-		"/C/workspace/octopress/sass/plugins/_plugins.scss",
-		"/C/workspace/octopress/sass/partials/_archive.scss",
-		"/C/workspace/octopress/sass/custom/_colors.scss",
-		"/C/workspace/octopress/sass/_base.scss",
-		"/C/workspace/octopress/sass/base/_solarized.scss",
-		"/C/workspace/octopress/source/blog/archives/index.html",
-		"/C/workspace/octopress/source/about/index.markdown",
-		"/C/workspace/octopress/.themes/minimized/sass/partials/_navigation.scss",
-		"/C/workspace/octopress/.themes/minimized/sass/partials/_blog.scss"
+		"/C/workspace/octopress/sass/base/_theme.scss"
 	],
 	"find":
 	{
@@ -751,9 +759,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 91.0,
 		"where_history":
 		[
+			"/Users/caubry/d/workspace/cyberpunk/src/com/cyberpunk",
 			"C:\\workspace\\octopress\\sass"
 		]
 	},
@@ -762,6 +771,95 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ExternalInterface",
+			"extern",
+			"rollOverComplete",
+			"rollOverTimer",
+			"rollOverComplete",
+			"velocity",
+			"veloci",
+			"bricks",
+			"velocity",
+			"savedPlayerPos",
+			"randomPlatform",
+			"checkPlatforms",
+			"savedBrickPlatform",
+			"randomPoint",
+			"generatePlatforms",
+			"player",
+			"savedCheckedPlatform",
+			"platformsArray",
+			"platforms",
+			"checkCollision",
+			"currentPlatform",
+			"newPlatform",
+			"platformClips",
+			"platform",
+			"savedCheckedPlatform",
+			"clip",
+			"platformsArray",
+			"hitTestObject",
+			"hit",
+			"his",
+			"packageName",
+			"platforms",
+			"savedCheckedPlatform",
+			"bricks",
+			"addC",
+			"addChild",
+			"velocity",
+			"platforms",
+			"checkPlatforms",
+			"generatePlatforms",
+			"checkPlatforms",
+			"savedCheckedPlatform",
+			"local",
+			"checkPlatforms",
+			"generatePlatforms",
+			"currentPlatformMc",
+			"clipShape",
+			"savedPlayerPos",
+			"randomPlatform",
+			"savedPlatform",
+			"platformRect",
+			"removePlatRect",
+			"addPlatRect",
+			"hasPlatformGenerated",
+			"bricks",
+			"platformShape",
+			"savedCheckedPlatform",
+			"platformPlaced",
+			"platforms",
+			"player",
+			"platforms",
+			"checkPlatforms",
+			"savedPlatform",
+			"addPlatforms",
+			"currentPlatform",
+			"checkPlatforms",
+			"savedCheckedPlatform",
+			"platformPlaced",
+			"checkPlatforms",
+			"savedPlatform",
+			"platformPlaced",
+			"checkPlatforms",
+			"currentPlatformArray",
+			"savedCheckedPlatform",
+			"platformRect",
+			"savedPlatf",
+			"platformPlaced",
+			"savedPlatform",
+			"addPlatforms",
+			"platformPlaced",
+			"savedPlatform",
+			"removePlatforms",
+			"brickType",
+			"currentPlatformType",
+			"clip",
+			"currentPlatformDesign",
+			"savedBrickPlatform",
+			"brickAmount",
+			"type",
 			"particle",
 			"particleHolder",
 			"activateParticle",
@@ -800,96 +898,7 @@
 			"last",
 			"last-child",
 			"project-list",
-			".cf",
-			"project",
-			"project ",
-			"project",
-			"project-content",
-			"project",
-			"project-list",
-			"margin",
-			"project ",
-			"project-content",
-			"project-info",
-			"project-list",
-			"project-content",
-			"date",
-			"excerpt",
-			"span",
-			"cf",
-			"entry-list",
-			"entry",
-			"decoration",
-			"entry-cont",
-			"entry-date",
-			"h1",
-			"wrap",
-			" }}</",
-			"entry-dat",
-			"entry-date",
-			"content",
-			"hover",
-			"exerpt",
-			"clearfix",
-			"article",
-			">\n",
-			"div class=\"project clearfix\"",
-			"bottom left",
-			"background",
-			"project\"",
-			" ![",
-			">\n",
-			"flex",
-			"border",
-			"  \n",
-			"    @",
-			"meta",
-			"article",
-			"radius",
-			"padding",
-			"padding-top",
-			"header",
-			"pad-min",
-			"padding",
-			"content",
-			"main",
-			"article",
-			"//$",
-			"last",
-			"### ###",
-			"<a name",
-			"<a name=\"(.*?)\">(.*?)</a>",
-			"</a>",
-			"a",
-			"</a>",
-			"\n[(",
-			"Therefore",
-			"npm",
-			"\">\n",
-			"Right",
-			"padding:10px;background:#000;background:rgba(0,0,0,0.8)",
-			"rgba",
-			"rgba(235, 235, 235",
-			"rgba",
-			"background",
-			">\n",
-			"background",
-			"default",
-			"&#47",
-			"\n  ",
-			"vSpeed",
-			"player",
-			"newPos",
-			"savedhitBoxWalls",
-			"4",
-			"blocks",
-			"savedhitBoxWalls",
-			"};\n",
-			"\",\n",
-			"newPos",
-			"drawPlayer",
-			"moveSpeed",
-			"prevX"
+			".cf"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -917,29 +926,29 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/com/cyberpunk/States/Platforms/Platform1.as",
+					"file": "src/com/cyberpunk/States/Platforms/PlatformContainer.as",
 					"settings":
 					{
-						"buffer_size": 584,
+						"buffer_size": 6441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								579,
-								579
+								6176,
+								6176
 							]
 						],
 						"settings":
@@ -1035,6 +1044,355 @@
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2290.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/com/cyberpunk/States/CollisionManager.as",
+					"settings":
+					{
+						"buffer_size": 4669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3187,
+								3187
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1454.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/com/cyberpunk/States/Platforms/Platform1.as",
+					"settings":
+					{
+						"buffer_size": 1495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1075,
+								1075
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 232.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/com/cyberpunk/States/Platforms/PlatformBase.as",
+					"settings":
+					{
+						"buffer_size": 1192,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								640,
+								640
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1043,134 +1401,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/com/cyberpunk/States/Particles/Particle.as",
+					"buffer": 4,
+					"file": "src/com/cyberpunk/States/Platforms/IPlatform.as",
 					"settings":
 					{
-						"buffer_size": 1143,
+						"buffer_size": 423,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								421,
-								421
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 139.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/com/cyberpunk/States/Particles/ParticleHolder.as",
-					"settings":
-					{
-						"buffer_size": 1580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1424,
-								1424
+								423,
+								423
 							]
 						],
 						"settings":
@@ -1265,126 +1508,11 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 302.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/com/cyberpunk/States/Protagonists/Character.as",
-					"settings":
-					{
-						"buffer_size": 3914,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								809,
-								809
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1436.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1425,7 +1553,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 438.0
+		"height": 265.0
 	},
 	"output.find_results":
 	{
@@ -1468,6 +1596,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 233.0,
+	"side_bar_width": 228.0,
 	"status_bar_visible": true
 }

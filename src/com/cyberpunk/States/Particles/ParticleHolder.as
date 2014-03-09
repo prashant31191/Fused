@@ -35,16 +35,13 @@ package com.cyberpunk.States.Particles
 			}
 		}
 
-		public function create(lifeSpan:Number, deathRate:Number, clipParams:Object, updateParams:Object):void
+		public function create(clip:MovieClip, lifeSpan:Number, deathRate:Number, clipParams:Object, updateParams:Object):void
 		{
-			var particleGraphics:Class = holder.loaderInfo.applicationDomain.getDefinition("CharacterParticle") as Class;
-			var clip:MovieClip = new particleGraphics() as MovieClip;
-
 			for (var i:String in clipParams)
 			{
 				clip[i]	= clipParams[i];
 			}
-
+			
 			holder.addChild(clip);
 
 			var particle:Particle = new Particle(clip, lifeSpan, deathRate, updateParams);

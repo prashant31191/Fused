@@ -207,7 +207,7 @@ package com.cyberpunk.States.Platforms
 				}
 			}
 
-			savedCheckedPlatform = new Array();
+			// savedCheckedPlatform = new Array();
 		}
 	}
 }

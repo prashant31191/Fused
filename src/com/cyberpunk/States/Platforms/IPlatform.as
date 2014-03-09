@@ -8,6 +8,8 @@ package com.cyberpunk.States.Platforms
         function get amountOfBricks()		:Number;	
         function get platformAxis()			:String;	
         function get velocity()				:Number;	
-        function get platformTypeName()		:Array;	
+        function get platformTypeName()     :Array; 
+
+        function breakPlatform(targetClip:MovieClip):void;
     }
 }

@@ -1,6 +1,7 @@
 package com.cyberpunk.States.Platforms
 {
 	import flash.display.MovieClip;
+    import flash.external.ExternalInterface;
 
 	/**
 	 * ...
@@ -20,6 +21,11 @@ package com.cyberpunk.States.Platforms
             brickAxis   = brick.axis;
 
             addChild(clip);
+        }
+
+        public function breakPlatform(targetClip:MovieClip):void 
+        {
+            //
         }
 
         public function get _instance():MovieClip 

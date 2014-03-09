@@ -8,8 +8,8 @@ package com.cyberpunk.States.Platforms
 	 */
 	public class Platform2 extends PlatformBase 
 	{
-		protected static const MAX_BRICK:Number  = 5;
-		protected static const VELOCITY:Number   = -10;
+		protected static const MAX_BRICK:Number  = 10;
+		protected static const VELOCITY:Number   = 8;
 		protected static const Y_AXIS:String  	 = 'Y_AXIS';
 
 		protected var platforms:Array = [   'Platform2Type1', 
@@ -25,6 +25,11 @@ package com.cyberpunk.States.Platforms
 
 			super(new PlatformType2(), {amount:MAX_BRICK, axis: Y_AXIS});
 		}
+
+		// override public function breakPlatform():void 
+		// {
+			
+		// }
 
 		override public function get velocity():Number 
 		{

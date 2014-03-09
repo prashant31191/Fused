@@ -26,6 +26,8 @@ package com.cyberpunk.States.Protagonists
 		private var bumping:Dictionary;
 		private var jump:Boolean = false;
 		private var isPlayerVisible:Boolean = false;
+		private var jumpUp:Boolean = false;
+		private var jumpingUp:Boolean = false;
 		private var savedPlayerPos:Point;
 		private var gravity:Number = 1;
 
@@ -68,17 +70,30 @@ package com.cyberpunk.States.Protagonists
 			if (speed.y < Config.Y_SPEED) {
 				speed.y += gravity;
 			}
-
-			if (bumping != null && bumping['down']) {
+			
+			// CODE IS AWFUL - NEED TO TIDY AFTER THE GAME JAM!!!!!!!!
+			if (bumping != null && (bumping['down'] && !jumpUp)) {
 				jumpAmount = 8;
 				clip.gotoAndStop(1);
-				// speed.y = 0;
+				speed.y = 0;
 				jump = false;
+				jumpUp = false;
 			}
-			
+
 			if (key['up'] && bumping['down'] && !jump) mainJump();
-			if (jumping) speed.y -= jumpAmount;
+			if (bumping && bumping['up'] && !jumpUp) mainJumpUp();
+			if (jumping && !jumpingUp) speed.y -= jumpAmount;
+			if (jumpingUp) speed.y -= 1.5;
 			if (jump) jumpAmount = Math.max(0, jumpAmount - 2);
+			if (jumpUp) jumpAmount = Math.max(0, jumpAmount - 2);
+
+			if (bumping != null && !bumping['up'] && jumpUp) {
+				jumpingUp    = false;
+				jumpUp    = false;
+				clip.gotoAndStop(1);
+				jumpAmount = BASED_JUMP;
+				key['up'] = false;
+			}
 
 			speed.x = 0;
 
@@ -92,7 +107,7 @@ package com.cyberpunk.States.Protagonists
 				else speed.x = Config.X_SPEED;
 				rightTween = new TweenLite(clip, 0.3, {rotation: 40, ease:Elastic});
 			}
-			else var originTwee:TweenLite = new TweenLite(clip, 0.3, {rotation: 0, ease:Elastic});
+			else var originTween:TweenLite = new TweenLite(clip, 0.3, {rotation: 0, ease:Elastic});
 		}
 
 		public function update():void
@@ -104,6 +119,13 @@ package com.cyberpunk.States.Protagonists
 
 			clip.x += speed.x;
 			clip.y += speed.y;
+		}
+
+		private function mainJumpUp():void 
+		{
+			clip.gotoAndStop(2);
+			jumpingUp = true;
+			jumpUp = true;
 		}
 
 		private function mainJump():void 
@@ -134,6 +156,7 @@ package com.cyberpunk.States.Protagonists
 			if (keyCode == Config.UP_ARROW || keyCode == Config.W_LETTER) {
 				key['up']  = false;
 				jumping    = false;
+				jumpingUp    = false;
 				clip.gotoAndStop(1);
 				jumpAmount = BASED_JUMP;
 			}
