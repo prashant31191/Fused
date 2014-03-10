@@ -7,7 +7,7 @@ package com.cyberpunk.States.Background
 	 */
 	public class InfiniteScrolling extends ScrollingLayer
 	{
-		[Embed(source = '../../../../../img/starfield.jpg')]
+		[Embed(source = '../../../../../img/cyber-3.jpg')]
 		private var bitmapClass:Class
 			
 		public function InfiniteScrolling() 

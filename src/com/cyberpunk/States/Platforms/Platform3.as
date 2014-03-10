@@ -6,7 +6,7 @@ package com.cyberpunk.States.Platforms
 	 * ...
 	 * @author LilyDrop
 	 */
-	public class Platform3 extends PlatformBase 
+	public class Platform3 extends PlatformBase
 	{
 		protected static const MAX_BRICK:Number  = 2;
 		protected static const VELOCITY:Number   = -1;
@@ -18,7 +18,7 @@ package com.cyberpunk.States.Platforms
 		{
 			Platform3Type1;
 
-			super(new PlatformType3(), {amount:MAX_BRICK, axis: X_AXIS});
+			super(new PlatformType3(), {amount:MAX_BRICK, axis: X_AXIS, brick: platforms});
 		}
 
 		// override public function breakPlatform():void 
@@ -26,15 +26,15 @@ package com.cyberpunk.States.Platforms
 			
 		// }
 
-		override public function get velocity():Number 
-		{
-			return VELOCITY;
-		}
+		// override public function get velocity():Number 
+		// {
+		// 	return VELOCITY;
+		// }
 
-		override public function get platformTypeName():Array 
-		{
-			return platforms;
-		}
+		// override public function get platformTypeName():Array 
+		// {
+		// 	return platforms;
+		// }
 	}
 
 }

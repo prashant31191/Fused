@@ -8,117 +8,171 @@ package com.cyberpunk.States.Protagonists
 	import com.cyberpunk.Helpers.Utils;
 	import flash.utils.getDefinitionByName;
 	import flash.geom.Point;
-	
-    public class EnemiesContainer 
+	import com.cyberpunk.Helpers.CustomTimer;
+	import flash.utils.setTimeout;
+	import flash.events.Event;
+	import com.cyberpunk.States.Particles.ParticleHolder;
+
+    public class EnemiesContainer extends Sprite
     {
-    	protected var player:MovieClip;
-    	protected var enemy:MovieClip;
-    	protected var enemyArray:Array;
+    	protected var enemyContainer:MovieClip;
     	protected var savedCheckedEnemy:Array;
-    	protected var randomEnemies:int;
-		protected var savedPlayerPos:Point;
 		protected var enemies:Array;
+		protected var platforms:Array;
+		protected var enemy:*;
+		protected var lookAt:Point;
+		protected var particleHolder:ParticleHolder;
+		protected var currentEnemies:Array = [];
 
-        public function EnemiesContainer (clip:MovieClip, player:MovieClip)
+        public function EnemiesContainer ()
         {
-        	enemy = clip;
-        	this.player = player;
-
-        	enemyArray = new Array();
-        	savedCheckedEnemy = new Array();
-
         	enemies = [ {packageName: 'com.cyberpunk.States.Protagonists.Enemy1', type: 'Enemy1'} ];
 
-			savedPlayerPos = new Point(player.x, player.y);
+        	Enemy1;
 
-        	var addingEnemy:Rectangle = new Rectangle(
-				((player.x + (player.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
-				((player.y + (player.height / 2)) - (Config.STAGE_HEIGHT / 2)) - Config.STAGE_HEIGHT,
-				Config.STAGE_WIDTH * 3,
-				Config.STAGE_HEIGHT * 3
-			);
+			enemyContainer    = new MovieClip();
+			savedCheckedEnemy = new Array();
+			particleHolder    = new ParticleHolder(enemyContainer);
 
-			randomEnemies = Utils.getRandomInt(Config.MIN_ENEMY, Config.MAX_ENEMY);
-
-			// Need a check against platforms
-			for (var i:int = 0; i < randomEnemies; i++) 
-			{
-				var currentEnemy:MovieClip = generateEnemies(addingEnemy);
-				enemy.addChild(currentEnemy);
-			}
+			addChild(enemyContainer);
         }
 
-        public function update():void
+        public function set savedPlatforms(platforms:Array):void 
 		{
-			if (player.y >= savedPlayerPos.y + Config.STAGE_HEIGHT) {
-				savedPlayerPos.y = player.y;
-				addEnemies();
-			} else if (savedPlayerPos.y - Config.STAGE_HEIGHT >= player.y) {
-				savedPlayerPos.y = player.y;
-				removeEnemies();
-			}
+			this.platforms = platforms;
 		}
 
-        private function generateEnemies(rect:Rectangle):MovieClip
+		public function get enemiesArray():Array 
 		{
-			var randomPoint:Point = new Point(
+			return savedCheckedEnemy;
+		}
+
+        public function addEnemies(newArea:Rectangle, numEnemies:Number):void 
+		{
+			for(var i:int = 0; i < numEnemies; i++)
+			{
+				var currentEnemy:Sprite = createEnemy(newArea);
+				if (!hasPlatformCollided(currentEnemy) && !hasEnemyCollided(currentEnemy)) 
+					enemyContainer.addChild(currentEnemy);
+			};
+		}
+
+		public function removeEnemies(oldArea:Rectangle):void 
+		{
+			for (var i:int = 0; i < savedCheckedEnemy.length; i++) {
+				if (oldArea.contains(savedCheckedEnemy[i].x, savedCheckedEnemy[i].y)) {
+					if (savedCheckedEnemy[i]) removeChild(savedCheckedEnemy[i]);
+				}
+			}
+			savedCheckedEnemy = new Array();
+		}
+
+		public function update():void 
+		{
+			for(var m:int = 0; m < savedCheckedEnemy.length; m++)
+			{
+				for(var z:int = 0; z < savedCheckedEnemy[m].numChildren; z++)
+				{
+					savedCheckedEnemy[m].getChildAt(z).rotate();
+				};
+			};
+		}
+
+		public function shootAtPosition(lookAt:Point, currentEnemy:*):void 
+		{
+			this.lookAt = lookAt;
+			currentEnemies.push(currentEnemy);
+
+			for(var j:int = 0; j < currentEnemies.length; j++)
+			{
+				if (currentEnemies[j] != currentEnemy) {
+					particleHolder.create(new Lazer(), 1000, 300, {
+							x: currentEnemy.x,
+							y: currentEnemy.y
+						}, {
+							x: lookAt.x,
+							y: lookAt.y
+						}
+					);
+				}
+			};
+
+			addEventListener(Event.ENTER_FRAME, shoot);
+		}
+
+		private function shoot(evt:Event):void 
+		{
+			var cx:Number;
+			var cy:Number; 
+			var degrees:Number;
+
+			for(var i:int = 0; i < currentEnemies.length; i++)
+			{
+				cx = currentEnemies[i].x - lookAt.x;
+				cy = currentEnemies[i].y - lookAt.y;
+
+				degrees = Math.atan2(cy, cx) * 180 / Math.PI;
+				currentEnemies[i].rotation = degrees + 90;
+				currentEnemies[i].scaleX   = currentEnemies[i].scaleY = 1.2;
+			};
+
+			removeEventListener(Event.ENTER_FRAME, shoot);
+		}
+
+		private function createEnemy(newArea:Rectangle):MovieClip 
+		{
+			// Pick a random position inside the given rectangle
+			var randomSinglePlatformPosition:Point = new Point(
 				Utils.getRandomInt(
-					rect.x,
-					rect.x + rect.width
+					newArea.x,
+					newArea.x + newArea.width
 				),
 				Utils.getRandomInt(
-					rect.y,
-					rect.y + rect.height
+					newArea.y,
+					newArea.y + newArea.height
 				)
 			);
 
-			Enemy1;
+			// // Pick a random enemy type
+			var currentIndex:int = int(Math.random() * enemies.length);
+			var ClassReference:Class = getDefinitionByName(enemies[currentIndex].packageName) as Class;
 
-			var currentIndexPos:int   = int(Math.random() * enemies.length);
-			var ClassReference:Class  = getDefinitionByName(enemies[currentIndexPos].packageName) as Class;
-			var currentClip:MovieClip = new ClassReference();
+			// // Store the current enemy type
+			enemy = new ClassReference();
+			var newEnemy:MovieClip = new MovieClip();
 
-			currentClip.x = randomPoint.x;
-			currentClip.y = randomPoint.y;
+			enemy.x = randomSinglePlatformPosition.x;
+			enemy.y = randomSinglePlatformPosition.y;
 
-			// enemyClip.addChild(currentClip);
-			savedCheckedEnemy.push(currentClip);
-
-			return currentClip;
+			newEnemy.addChild(enemy);
+			return newEnemy;
 		}
 
-		private function addEnemies():void 
+		private function hasPlatformCollided(currentEnemy:Sprite):Boolean 
 		{
-			var addEnemyRect:Rectangle = new Rectangle(
-				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
-				(player.y + (player.height * 2)) + Config.STAGE_HEIGHT,
-				Config.STAGE_WIDTH * 3,
-				Config.STAGE_HEIGHT
-			);
+			var rect:Rectangle = currentEnemy.getRect(currentEnemy.parent);
+			rect.inflate(40, 40);
 
-			for (var i:int = 0; i < randomEnemies; i++) 
+			for(var z:int = 0; z < platforms.length; z++)
 			{
-				var currentClip:MovieClip = generateEnemies(addEnemyRect);
-				enemy.addChild(currentClip);
-			}
+				var rect2:Rectangle = platforms[z].getRect(platforms[z].parent);
+				if (rect.intersects(rect2)) return true;
+			};
+			return false;
 		}
 
-		private function removeEnemies():void 
+		private function hasEnemyCollided(currentEnemy:Sprite):Boolean 
 		{
-			var removeEnemyRect:Rectangle = new Rectangle(
-				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
-				player.y - (Config.STAGE_HEIGHT * 2),
-				Config.STAGE_WIDTH * 3,
-				Config.STAGE_HEIGHT
-			);
-			
-			for (var i:int = 0; i < savedCheckedEnemy.length; i++) {
-				if (removeEnemyRect.contains(savedCheckedEnemy[i].x, savedCheckedEnemy[i].y)) {
-					if (savedCheckedEnemy[i]) enemy.removeChild(savedCheckedEnemy[i]);
-				}
-			}
+			var rect:Rectangle = currentEnemy.getRect(currentEnemy.parent);
+			rect.inflate(40, 40);
 
-			savedCheckedEnemy = new Array();
+			for(var z:int = 0; z < savedCheckedEnemy.length; z++)
+			{
+				var rect2:Rectangle = savedCheckedEnemy[z].getRect(savedCheckedEnemy[z].parent);
+				if (rect.intersects(rect2)) return true;
+			};
+			savedCheckedEnemy.push(currentEnemy);
+			return false;
 		}
     }
 }

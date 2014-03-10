@@ -3,6 +3,7 @@ package com.cyberpunk.States.Particles
 	import flash.display.Sprite;
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import flash.external.ExternalInterface;
 
     public class ParticleHolder extends Sprite
     {
@@ -28,8 +29,7 @@ package com.cyberpunk.States.Particles
 			{
 				particleArray[i].update();
 
-				if (particleArray[i]._lifeSpan <= 0)
-				{
+				if (particleArray[i]._lifeSpan <= 0) {
 					remove(i);
 				}
 			}
@@ -37,15 +37,13 @@ package com.cyberpunk.States.Particles
 
 		public function create(clip:MovieClip, lifeSpan:Number, deathRate:Number, clipParams:Object, updateParams:Object):void
 		{
-			for (var i:String in clipParams)
-			{
+			for (var i:String in clipParams) {
 				clip[i]	= clipParams[i];
 			}
 			
 			holder.addChild(clip);
-
+			
 			var particle:Particle = new Particle(clip, lifeSpan, deathRate, updateParams);
-
 			add(particle);
 		}
 

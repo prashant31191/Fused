@@ -7,19 +7,24 @@ package com.cyberpunk.States.Protagonists
 	import fl.transitions.Tween;
 	import fl.motion.easing.Elastic;
 
-    public class ProtagonistsBase extends MovieClip
+    public class ProtagonistsBase extends Sprite
     {
-    	protected var clip:MovieClip;
+    	protected var currentClip:MovieClip;
     	protected var speed:Point;
 
         public function ProtagonistsBase (clip:MovieClip)
         {
-        	this.clip = clip;
+        	this.currentClip = clip;
+
+        	currentClip.alpha = 1;
+        	currentClip.gotoAndStop(1);
+        	
+            addChild(currentClip);
         }
 
-        public function get playerClip():MovieClip
+        public function get clip():MovieClip
 		{
-			return clip;
+			return currentClip;
 		}
 
 		public function set playerSpeed(speed:Point):void 

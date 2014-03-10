@@ -2,55 +2,61 @@ package com.cyberpunk.States.Platforms
 {
 	import flash.display.MovieClip;
     import flash.external.ExternalInterface;
+    import flash.display.Sprite;
 
 	/**
 	 * ...
 	 * @author LilyDrop
 	 */
-    public class PlatformBase extends MovieClip implements IPlatform
+    public class PlatformBase extends Sprite implements IPlatform
     {
-        protected var clip:MovieClip;
+        protected var currentClip:MovieClip;
         protected var brickAmount:Number;
         protected var brickAxis:String;
+        protected var brickType:Array;
 
         public function PlatformBase (clip:MovieClip, brick:Object)
         {
-            this.clip = clip;
+            this.currentClip = clip;
 
             brickAmount = brick.amount;
             brickAxis   = brick.axis;
-
-            addChild(clip);
+            brickType   = brick.brick;
         }
 
-        public function breakPlatform(targetClip:MovieClip):void 
+        public function get clip():MovieClip 
         {
-            //
+            return currentClip;
         }
 
-        public function get _instance():MovieClip 
-        {
-            return clip;
-        }
-
-        public function get amountOfBricks():Number 
+        public function get numBricksPerPlatform():Number 
         {
             return brickAmount;
         }
 
-        public function get platformAxis():String 
+        public function get numBricksTypePerPlatform():Number 
+        {
+            return brickType.length;
+        }
+
+        public function get brickArray():Array 
+        {
+            return brickType;
+        }
+
+        public function get brickAxisForPlatform():String 
         {
             return brickAxis;
         }
 
-        public function get velocity():Number 
-        {
-            return 0;
-        }
+        // public function get velocity():Number 
+        // {
+        //     return 0;
+        // }
 
-        public function get platformTypeName():Array 
-        {
-            return new Array();
-        }
+        // public function get platformTypeName():Array 
+        // {
+        //     return new Array();
+        // }
     }
 }

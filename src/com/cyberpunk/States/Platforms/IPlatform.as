@@ -4,12 +4,12 @@ package com.cyberpunk.States.Platforms
 	
     public interface IPlatform
     {
-        function get _instance()			:MovieClip;	
-        function get amountOfBricks()		:Number;	
-        function get platformAxis()			:String;	
-        function get velocity()				:Number;	
-        function get platformTypeName()     :Array; 
+        // function get _instance()			:MovieClip;	
+        function get numBricksPerPlatform()		:Number;	
+        // function get platformAxis()			:String;	
+        // function get velocity()				:Number;	
+        // function get platformTypeName()     :Array; 
 
-        function breakPlatform(targetClip:MovieClip):void;
+        // function breakPlatform(targetClip:MovieClip):void;
     }
 }

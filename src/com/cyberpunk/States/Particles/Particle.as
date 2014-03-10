@@ -29,14 +29,10 @@ package com.cyberpunk.States.Particles
 			}
 
 			if (particle.currentFrame < particle.totalFrames)
-            {
                 particle.nextFrame();
-            }
 
             if (particle.currentFrame == particle.totalFrames)
-            {
             	particle.gotoAndStop(1);
-            }
 		}
 
 		public function removeClip():void
