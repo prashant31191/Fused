@@ -6,6 +6,7 @@ package com.cyberpunk
 	import com.cyberpunk.States.Background.*;
 	import com.cyberpunk.Setup.Config;
 	import com.cyberpunk.Helpers.Utils;
+	import com.cyberpunk.Events.KeyEvents;
 	import com.cyberpunk.States.Protagonists.EnemiesContainer;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
@@ -16,6 +17,7 @@ package com.cyberpunk
 	import flash.external.ExternalInterface;
 	import flash.geom.Rectangle;
 	import flash.events.Event;
+	import flash.utils.Dictionary;
 
 	/**
 	 * ...
@@ -46,10 +48,18 @@ package com.cyberpunk
 			assets = new Assets();
 			_stage = main._stage;
 
-			player = new Player(assets.mCharacter);
+			controls = new Controls(_stage);
+			scrollingBackground = new ScrollingBackground();
+
+			player   = new Player(assets.mCharacter);
+			player.playerSpeed = new Point(0, 0);
+			// player.playerSpeed = new Point(0, Config.Y_SPEED);
+			player.generateParticles();
 			init();
 
+			_stage.addChild(scrollingBackground);
 			_stage.addChild(assets);
+
 			assets.addChild(player);
 			cameraFollowCharacter();
 
@@ -59,9 +69,7 @@ package com.cyberpunk
 			enemiesContainer = new EnemiesContainer();
 			enemiesContainer.savedPlatforms = platformContainer.platformArray;
 
-			// scrollingBackground = new ScrollingBackground();
 			// collisionManager    = new CollisionManager();
-			// controls 			= new Controls(_stage);
 
 			platformContainer.addPlatforms(newArea, numPlatforms);
 			enemiesContainer.addEnemies(newArea, numEnemies);
@@ -98,13 +106,15 @@ package com.cyberpunk
 
 			_stage.addEventListener(Event.ENTER_FRAME, update);
 			_stage.addEventListener(Event.ENTER_FRAME, cameraFollowCharacter);
+			_stage.addEventListener(KeyEvents.KEY_DOWN, onKeyDown);
+			_stage.addEventListener(KeyEvents.KEY_UP, onKeyUp);
 		}
 
 		private function cameraFollowCharacter(e:Event = null):void 
 		{
  			assets.scrollRect = new Rectangle(
- 				player.x - _stage.stageWidth / 2, 
- 				player.y - _stage.stageHeight / 2, 
+ 				player.clip.x - _stage.stageWidth / 2, 
+ 				player.clip.y - _stage.stageHeight / 2, 
  				_stage.stageWidth, _stage.stageHeight
  			);
 		}
@@ -115,15 +125,15 @@ package com.cyberpunk
 		private function init():void 
 		{
 			newArea = new Rectangle(
-				((player.x + (player.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
-				((player.y + (player.height / 2)) - (Config.STAGE_HEIGHT / 2)) - Config.STAGE_HEIGHT,
+				((player.clip.x + (player.clip.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
+				((player.clip.y + (player.clip.height / 2)) - (Config.STAGE_HEIGHT / 2)) - Config.STAGE_HEIGHT,
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT * 3
 			);
 
 			oldArea = new Rectangle(
-				(player.x + (player.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
-				player.y - (Config.STAGE_HEIGHT * 2),
+				(player.clip.x + (player.clip.width / 2)) - Config.STAGE_WIDTH - (Config.STAGE_WIDTH / 2),
+				player.clip.y - (Config.STAGE_HEIGHT * 2),
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT
 			);
@@ -144,8 +154,9 @@ package com.cyberpunk
 			// collisionManager.update(character);
 			// character.update();
 
-			// background.move(-character.currentPlayerSpeed.x / 4, -character.currentPlayerSpeed.y / 4);
+			scrollingBackground.move(-player.currentPlayerSpeed.x / 4, -player.currentPlayerSpeed.y / 4);
 			
+			player.update();
 			enemiesContainer.update();
 			playerCloseToEnemies(enemiesContainer.enemiesArray);
 
@@ -158,20 +169,33 @@ package com.cyberpunk
 
 			for(var i:int = 0; i < enemies.length; i++)
 			{
-				for( var j = 0; j < enemies[i].numChildren; j++ )
+				for(var j:int = 0; j < enemies[i].numChildren; j++)
 				{
 					distance = Point.distance(
-						new Point(player.x, player.y),
+						new Point(player.clip.x, player.clip.y),
 						new Point(enemies[i].getChildAt(j).x, enemies[i].getChildAt(j).y)
 					);
-					if (distance < 300) {
+
+					if (distance < 200) {
 						enemiesContainer.shootAtPosition(
-							new Point(player.x, player.y),
+							new Point(player.clip.x, player.clip.y),
 							enemies[i].getChildAt(j)
 						);
+					} else {
+						enemiesContainer.offAlert(enemies[i].getChildAt(j));
 					}
 				};
 			};
+		}
+
+		private function onKeyDown(evt:KeyEvents):void 
+		{
+			player.move(evt.data);
+		}
+
+		private function onKeyUp(evt:KeyEvents):void 
+		{
+			player.resetMovement(evt.data);
 		}
 	}
 }

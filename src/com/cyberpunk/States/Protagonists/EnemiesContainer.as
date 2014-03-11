@@ -21,7 +21,6 @@ package com.cyberpunk.States.Protagonists
 		protected var platforms:Array;
 		protected var enemy:*;
 		protected var lookAt:Point;
-		protected var particleHolder:ParticleHolder;
 		protected var currentEnemies:Array = [];
 
         public function EnemiesContainer ()
@@ -32,7 +31,6 @@ package com.cyberpunk.States.Protagonists
 
 			enemyContainer    = new MovieClip();
 			savedCheckedEnemy = new Array();
-			particleHolder    = new ParticleHolder(enemyContainer);
 
 			addChild(enemyContainer);
         }
@@ -64,6 +62,7 @@ package com.cyberpunk.States.Protagonists
 					if (savedCheckedEnemy[i]) removeChild(savedCheckedEnemy[i]);
 				}
 			}
+
 			savedCheckedEnemy = new Array();
 		}
 
@@ -82,41 +81,23 @@ package com.cyberpunk.States.Protagonists
 		{
 			this.lookAt = lookAt;
 			currentEnemies.push(currentEnemy);
-
-			for(var j:int = 0; j < currentEnemies.length; j++)
-			{
-				if (currentEnemies[j] != currentEnemy) {
-					particleHolder.create(new Lazer(), 1000, 300, {
-							x: currentEnemy.x,
-							y: currentEnemy.y
-						}, {
-							x: lookAt.x,
-							y: lookAt.y
-						}
-					);
-				}
-			};
-
-			addEventListener(Event.ENTER_FRAME, shoot);
+			addEventListener(Event.ENTER_FRAME, updateEnemiesBehaviour);
 		}
 
-		private function shoot(evt:Event):void 
+		public function offAlert(currentEnemy:*):void 
 		{
-			var cx:Number;
-			var cy:Number; 
-			var degrees:Number;
+			currentEnemy.offAlert();
+		}
 
+		private function updateEnemiesBehaviour(e:Event):void 
+		{
 			for(var i:int = 0; i < currentEnemies.length; i++)
 			{
-				cx = currentEnemies[i].x - lookAt.x;
-				cy = currentEnemies[i].y - lookAt.y;
-
-				degrees = Math.atan2(cy, cx) * 180 / Math.PI;
-				currentEnemies[i].rotation = degrees + 90;
-				currentEnemies[i].scaleX   = currentEnemies[i].scaleY = 1.2;
+				currentEnemies[i].changeBehaviour(lookAt);
 			};
 
-			removeEventListener(Event.ENTER_FRAME, shoot);
+			currentEnemies = new Array();
+			removeEventListener(Event.ENTER_FRAME, updateEnemiesBehaviour);
 		}
 
 		private function createEnemy(newArea:Rectangle):MovieClip 
@@ -158,6 +139,7 @@ package com.cyberpunk.States.Protagonists
 				var rect2:Rectangle = platforms[z].getRect(platforms[z].parent);
 				if (rect.intersects(rect2)) return true;
 			};
+
 			return false;
 		}
 
@@ -171,6 +153,7 @@ package com.cyberpunk.States.Protagonists
 				var rect2:Rectangle = savedCheckedEnemy[z].getRect(savedCheckedEnemy[z].parent);
 				if (rect.intersects(rect2)) return true;
 			};
+
 			savedCheckedEnemy.push(currentEnemy);
 			return false;
 		}

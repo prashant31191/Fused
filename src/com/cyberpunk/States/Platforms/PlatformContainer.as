@@ -53,8 +53,10 @@ package com.cyberpunk.States.Platforms
 			for(var i:int = 0; i < numPlatforms; i++)
 			{
 				var currentPlatform:Sprite = createPlatform(newArea);
-				if (!hasPlatformCollided(currentPlatform) && !hasPlayerCollided(currentPlatform)) 
+				if (!hasPlatformCollided(currentPlatform) && !hasPlayerCollided(currentPlatform)) {
 					platformContainer.addChild(currentPlatform);
+					savedCheckedPlatform.push(currentPlatform);
+				}
 			};
 		}
 
@@ -80,7 +82,6 @@ package com.cyberpunk.States.Platforms
 				if (rect.intersects(rect2)) return true;
 			};
 
-			savedCheckedPlatform.push(currentPlatform);
 			return false;
 		}
 

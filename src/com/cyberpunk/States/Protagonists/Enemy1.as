@@ -42,6 +42,25 @@ package com.cyberpunk.States.Protagonists
             currentClip.mLight.scaleX   = clip.mLight.scaleY = Math.random() * 1;
         }
 
+        public function changeBehaviour(lookAt:Point):void 
+        {
+            var cx:Number;
+            var cy:Number; 
+            var degrees:Number;
+
+            cx = currentClip.x - lookAt.x;
+            cy = currentClip.y - lookAt.y;
+
+            degrees = Math.atan2(cy, cx) * 180 / Math.PI;
+            currentClip.rotation = degrees + 90;
+            currentClip.scaleX   = currentClip.scaleY = 1.2;
+        }
+
+        public function offAlert():void 
+        {
+            currentClip.scaleX = currentClip.scaleY = 1;
+        }
+
         // public function update(e:Event):void 
         // {
         //     rotateEnemy();
