@@ -114,11 +114,11 @@ package com.fused.States.Protagonists
 				)
 			);
 
-			// // Pick a random enemy type
+			// Pick a random enemy type
 			var currentIndex:int = int(Math.random() * enemies.length);
 			var ClassReference:Class = getDefinitionByName(enemies[currentIndex].packageName) as Class;
 
-			// // Store the current enemy type
+			// Store the current enemy type
 			enemy = new ClassReference();
 			var newEnemy:MovieClip = new MovieClip();
 

@@ -125,7 +125,7 @@ package com.fused
 		private function init():void 
 		{
 			newArea = new Rectangle(
-				((player.clip.x + (player.clip.width / 2)) - (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
+				((player.clip.x + (player.clip.width / 2)) -  (Config.STAGE_WIDTH / 2)) - Config.STAGE_WIDTH,
 				((player.clip.y + (player.clip.height / 2)) - (Config.STAGE_HEIGHT / 2)) - Config.STAGE_HEIGHT,
 				Config.STAGE_WIDTH * 3,
 				Config.STAGE_HEIGHT * 3

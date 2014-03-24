@@ -36,5 +36,43 @@ package com.fused.Helpers
 			if (distance < 0) distance *= 1;
 			return distance;
 		}
+
+		/**
+		 * Get distance
+		 * @param	delta_x
+		 * @param	delta_y
+		 * @return
+		 */
+		public static function getDistance(delta_x:Number, delta_y:Number):Number
+		{
+			return Math.sqrt((delta_x * delta_x) + (delta_y * delta_y));
+		}
+		
+		/**
+		 * Get radians
+		 * @param	delta_x
+		 * @param	delta_y
+		 * @return
+		 */
+		public static function getRadians(delta_x:Number, delta_y:Number):Number
+		{
+			var r:Number = Math.atan2(delta_y, delta_x);
+			
+			if (delta_y < 0)
+			{
+				r += (2 * Math.PI);
+			}
+			return r;
+		}
+		
+		/**
+		 * Get degrees
+		 * @param	radians	Takes radians
+		 * @return	Returns degrees
+		 */
+		public static function getDegrees(radians:Number):Number
+		{
+			return Math.floor(radians / (Math.PI / 180));
+		}
 	}
 }
