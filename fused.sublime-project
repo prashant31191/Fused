@@ -1,0 +1,29 @@
+{
+    "folders":
+    [
+        {
+            "path": "/Users/caubry/d/workspace/fused"
+        },
+        {
+            "path": "/Users/caubry/d/workspace/fused/lib/greensock/src/com/greensock"
+        }
+    ],
+    "template":
+    {
+        "name":"fused",
+        "width":"640",
+        "height":"360",
+        "mxmlc":
+        {
+            "config-file":
+            [
+                "build-config.xml"
+            ]
+        },
+        "run":
+        {
+            "mac":"open 'index.html' -a '/Applications/Google Chrome.app'",
+            "windows": "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe index.html"
+        }
+    }
+}

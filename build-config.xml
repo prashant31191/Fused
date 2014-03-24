@@ -3,15 +3,15 @@
 <!--Any modifications you make may be lost.-->
 <flex-config>
   <target-player>11.0</target-player>
-  <output>cyberpunk.swf</output>
+  <output>fused.swf</output>
   <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
   <compiler>
     <source-path append="true">
-      <path-element>/d/workspace/cyberpunk/lib/greensock/src</path-element>
+      <path-element>/d/workspace/fused/lib/greensock/src</path-element>
       <path-element>src</path-element>
     </source-path>
     <include-libraries>
-      <library>cyberpunk.swc</library>
+      <library>fused.swc</library>
     </include-libraries>
   </compiler>
   <use-network>false</use-network>

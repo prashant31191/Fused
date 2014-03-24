@@ -1,6 +1,6 @@
 package  
 {
-	import com.cyberpunk.Game;
+	import com.fused.Game;
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
