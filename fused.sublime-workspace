@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"lo",
+				"lookAt"
+			],
+			[
+				"ad",
+				"addChild"
+			],
+			[
+				"mov",
+				"moveX"
+			],
+			[
+				"rot",
+				"rotate"
+			],
+			[
 				"ro",
 				"rotateArea"
 			],
@@ -74,10 +90,6 @@
 			[
 				"swip",
 				"swipeArrow"
-			],
-			[
-				"ad",
-				"addEventListener"
 			],
 			[
 				"remove",
@@ -436,10 +448,6 @@
 				"staticBlockInfo"
 			],
 			[
-				"lo",
-				"loadedMap"
-			],
-			[
 				"m",
 				"mediatorEvent"
 			],
@@ -476,10 +484,6 @@
 				"moveTimer"
 			],
 			[
-				"mov",
-				"moveTimer"
-			],
-			[
 				"mo",
 				"moveTimer"
 			],
@@ -510,10 +514,6 @@
 			[
 				"playe",
 				"playerSprite"
-			],
-			[
-				"atl",
-				"atlasImage"
 			]
 		]
 	},
@@ -547,8 +547,41 @@
 			"file": "/Users/caubry/d/workspace/fused/src/com/fused/Game.as",
 			"settings":
 			{
-				"buffer_size": 5973,
+				"buffer_size": 5974,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/caubry/d/workspace/fused/src/com/fused/States/Protagonists/EnemiesContainer.as",
+			"settings":
+			{
+				"buffer_size": 4264,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/caubry/d/workspace/fused/src/com/fused/States/Protagonists/Enemy1.as",
+			"settings":
+			{
+				"buffer_size": 7638,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import flash.display.MovieClip;\nimport flash.geom.Point;\nimport flash.events.MouseEvent;\n\n// Code by Benoit Freslon.\n// Tutorials, Flash games:\n// http://www.benoitfreslon.com\n//\nvar cosMc = new MovieClip();\nvar sinMc = new MovieClip();\n\n// Draw lines\naddChild(cosMc);\naddChild(sinMc);\nvar pt = new Point();\n\n// This object will always look at the mouse cursor\nmyTank.addEventListener(Event.ENTER_FRAME,  tankEnterFrame);\n// This function will be launched every frame (25 times by seconds);\nfunction tankEnterFrame(pEvt)\n{\n	// pEvt.currentTarget: myTank\n	var mc = pEvt.currentTarget;\n	// Get the radian angle between the tank and the cursor\n	// You can also replace mouseX and mouseY by another coordinates\n	var angleRadian = Math.atan2(mouseY - mc.y,mouseX - mc.x);\n	// Convert the radian angle in dedree angle\n	var angleDegree = angleRadian * 180 / Math.PI;\n	// Set the orientation\n	mc.rotation = angleDegree;\n	// Display angle of rotation in degree\n	txtAngle.text = Math.round(angleDegree) + \"°\";\n\n	// Drawn lines\n	/**/\n	cosMc.graphics.clear();\n	sinMc.graphics.clear();\n	pt.x = mc.x + Math.cos(angleRadian) * 67;\n	pt.y = mc.y + Math.sin(angleRadian) * 67;\n\n	cosMc.graphics.lineStyle(2,0x0000FF);\n	sinMc.graphics.lineStyle(2,0xFF0000);\n	cosMc.graphics.moveTo(pt.x,pt.y);\n	sinMc.graphics.moveTo(pt.x,pt.y);\n	txtCos.text = String(Math.cos(angleRadian));\n	txtSin.text = String(Math.sin(angleRadian));\n	cosMc.graphics.lineTo(pt.x - Math.cos(angleRadian)*67,pt.y );\n	sinMc.graphics.lineTo(pt.x,pt.y - Math.sin(angleRadian)*67);\n	/**/\n\n}\n\n// Add a mouse down event on stage\nstage.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown)\n\nfunction mouseDown (pEvent) {\n	// Create a new bullet\n	var b = new Bullet();\n	// Set his position to the tank position\n	b.x = myTank.x;\n	b.y = myTank.y;\n	// Save the randian angle between the mouse and the tank\n	// This angle will set the direction of the bullet\n	b.angleRadian = Math.atan2(mouseY - myTank.y,mouseX -myTank.x);\n	// Add an enter frame event on each bullet\n	b.addEventListener(Event.ENTER_FRAME, bulletEnterFrame)\n	// Add this display object on the display list\n	addChild(b)\n}\n\n// Velocity of each bullet\nvar speed = 8\n\nfunction bulletEnterFrame (pEvent) {\n	// Get the current object (Bullet)\n	var b = pEvent.currentTarget;\n	// Move this bullet on each frames\n	// On X axis use the cosinus angle\n	b.x += Math.cos(b.angleRadian) * speed;\n	// On Y axis use the sinus angle\n	b.y += Math.sin(b.angleRadian) * speed;\n	// Orient the bullet to the direction\n	b.rotation = b.angleRadian*180/Math.PI;\n	// You have to remove each created bullet \n	// So after every moves you must check bullet position\n	// If the bullet is out of the screen\n	if (b.x < 0 || b.x > 400 || b.y < 0 || b.y> 400) {\n		// Remove it from the display list\n		removeChild(b)\n		// /!\\ AND REOMOVE HIS EVENT LISTER\n		b.removeEventListener(Event.ENTER_FRAME, bulletEnterFrame)\n	}\n}\n\n\n",
+			"settings":
+			{
+				"buffer_size": 2886,
+				"line_ending": "Unix",
+				"name": "import flash.display.MovieClip;"
+			}
+		},
+		{
+			"file": "/Users/caubry/Downloads/weapon-projectile-gun/Main.as",
+			"settings":
+			{
+				"buffer_size": 8527,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -616,6 +649,7 @@
 	},
 	"file_history":
 	[
+		"/Users/caubry/d/workspace/fused/src/com/fused/Helpers/Utils.as",
 		"/Users/caubry/d/workspace/fused/Fused.as3proj",
 		"/Users/caubry/d/workspace/cyberpunk/cyberpunk.sublime-project",
 		"/Users/caubry/d/studios/oliv/promo/2014/uk/oliv_website_promo_video1_04741/interactive_as3/interactions/interaction_6/bin/car_images/rename_images.sh",
@@ -742,8 +776,7 @@
 		"/C/workspace/caubry.github.io/README.md",
 		"/C/workspace/caubry.github.io/_site/git-hooks-for-jshint-node-module-with-grunt/index.html",
 		"/C/workspace/jamesmcfadden.github.io/_layouts/default.html",
-		"/C/workspace/octopress/source/index.html",
-		"/C/workspace/caubry.github.io/_site/flashdevelop-for-as3/index.html"
+		"/C/workspace/octopress/source/index.html"
 	],
 	"find":
 	{
@@ -762,6 +795,42 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"destroyBullet",
+			"createBullet",
+			"_isFiring",
+			"_isLoaded",
+			"_isFiring",
+			"createBullet",
+			"fire",
+			"updateBullets",
+			"reloadWeapon",
+			"reloadTimerHandler",
+			"_reloadSpeed",
+			"gravityCheckbox",
+			"bullets",
+			"_bullets",
+			"updateBullets",
+			"createBullet",
+			"_bulletSpeed",
+			"_endY",
+			"_bulletSpread",
+			"_barrelLength",
+			"_startX",
+			"_pcos",
+			"updateBullets",
+			"shoot",
+			"updateBullets",
+			"fire",
+			"createBullet",
+			"_bullets",
+			"updateBullets",
+			"updateRotation",
+			"_rotateSpeedMax",
+			"_trueRotation",
+			"getDegrees",
+			"fire",
+			"rotate",
+			"lookAt",
 			"cyberpunk",
 			"rotateCar",
 			"sceneUpdate",
@@ -853,43 +922,7 @@
 			"for",
 			"newFilesList",
 			"for",
-			"removeHighQualityImage",
-			"changeCar",
-			"finished",
-			"scaleX",
-			"assets",
-			"swipeScene",
-			"lastFrame",
-			"removeScene",
-			"removeMouseEvents",
-			"MouseEve",
-			"removeColorSelectorInterface",
-			"lastFrame",
-			"removeMouseEvents",
-			"50",
-			"loadHighQualityImages",
-			"sceneUpdate",
-			"previousPos",
-			"startSwipePos",
-			"swipeArrowPosition",
-			"Swipe",
-			"previousPos",
-			"canSwipe",
-			"swipeInteraction",
-			"currentAmountOfDot",
-			"whiteDotsArray",
-			"rotateArea",
-			"rotateCar",
-			"mouseMove",
-			"mColorSelector",
-			"removeColorSelectorInterface",
-			"colorChangeTimer",
-			"rollOverTimer",
-			"colorChangeTimer",
-			"currentColor",
-			"currentCar",
-			"savedTarget",
-			"E"
+			"removeHighQualityImage"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -923,6 +956,7 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1280,15 +1314,15 @@
 					"file": "/Users/caubry/d/workspace/fused/src/com/fused/Game.as",
 					"settings":
 					{
-						"buffer_size": 5973,
+						"buffer_size": 5974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17,
-								17
+								4069,
+								4069
 							]
 						],
 						"settings":
@@ -1386,7 +1420,383 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2063.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/caubry/d/workspace/fused/src/com/fused/States/Protagonists/EnemiesContainer.as",
+					"settings":
+					{
+						"buffer_size": 4264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2651,
+								2673
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1017.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/caubry/d/workspace/fused/src/com/fused/States/Protagonists/Enemy1.as",
+					"settings":
+					{
+						"buffer_size": 7638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3759,
+								3659
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1286.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 2886,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								999,
+								524
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import flash.display.MovieClip;",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 77.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/caubry/Downloads/weapon-projectile-gun/Main.as",
+					"settings":
+					{
+						"buffer_size": 8527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7477,
+								7477
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4002.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
